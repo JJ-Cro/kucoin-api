@@ -1,6 +1,7 @@
 import { BaseRestClient } from './lib/BaseRestClient.js';
 import { REST_CLIENT_TYPE_ENUM, RestClientType } from './lib/requestUtils.js';
 import {
+  BatchCancelOrdersBySymbolRequestUTA,
   BatchCancelOrdersRequestUTA,
   BatchPlaceOrderRequestUTA,
   CancelOrderRequestUTA,
@@ -38,6 +39,7 @@ import {
 } from './types/request/uta-types.js';
 import { APISuccessResponse } from './types/response/shared.types.js';
 import {
+  BatchCancelOrdersBySymbolResponseUTA,
   BatchCancelOrdersResponseUTA,
   BatchPlaceOrderResponseUTA,
   CancelOrderResponseUTA,
@@ -493,6 +495,16 @@ export class UnifiedAPIClient extends BaseRestClient {
         ? `api/ua/v1/${accountMode}/order/cancel-batch?tradeType=${params.tradeType}`
         : `api/ua/v1/${accountMode}/order/cancel-batch`;
     return this.postPrivate(url, params);
+  }
+
+  /**
+   * Batch Cancel Orders By Symbol
+   * Cancels orders in batch by symbol. UTA only. Supports SPOT (non-margin) and Futures Cross Margin.
+   */
+  batchCancelOrdersBySymbol(
+    params: BatchCancelOrdersBySymbolRequestUTA,
+  ): Promise<APISuccessResponse<BatchCancelOrdersBySymbolResponseUTA>> {
+    return this.postPrivate('api/ua/v1/unified/order/cancel-all', params);
   }
 
   /**

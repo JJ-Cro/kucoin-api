@@ -335,6 +335,14 @@ export interface BatchCancelOrdersRequestUTA {
   cancelOrderList: CancelOrderItemRequestUTA[]; // Maximum 20 orders
 }
 
+/** Batch cancel orders by symbol (POST /order/cancel-all) */
+export interface BatchCancelOrdersBySymbolRequestUTA {
+  tradeType: 'SPOT' | 'FUTURES' | 'MARGIN';
+  symbol: string;
+  marginMode?: 'CROSS' | 'ISOLATED';
+  orderFilter?: 'NORMAL' | 'ADVANCED';
+}
+
 export interface SetDCPRequestUTA {
   tradeType: 'SPOT' | 'FUTURES' | 'MARGIN';
   timeout: number; // Range: timeout=-1 (unset) or 5 <= timeout <= 86400 seconds
