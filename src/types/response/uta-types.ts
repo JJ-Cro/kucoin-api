@@ -519,6 +519,28 @@ export interface BatchCancelOrdersResponseUTA {
   items: BatchCancelOrderItemResponseUTA[];
 }
 
+/** Batch cancel by symbol - Classic response (orderId list) */
+export interface BatchCancelOrdersBySymbolItemClassicUTA {
+  orderId: string;
+}
+
+/** Batch cancel by symbol - UTA response (full result per order) */
+export interface BatchCancelOrdersBySymbolItemUTA {
+  code?: string;
+  msg?: string;
+  orderId?: string;
+  ts?: number;
+  clientOid?: string | null;
+}
+
+export interface BatchCancelOrdersBySymbolResponseUTA {
+  tradeType: 'SPOT' | 'FUTURES' | 'MARGIN';
+  ts?: number;
+  items:
+    | BatchCancelOrdersBySymbolItemClassicUTA[]
+    | BatchCancelOrdersBySymbolItemUTA[];
+}
+
 export interface DCPResponseUTA {
   tradeType: 'SPOT' | 'FUTURES' | 'MARGIN';
   symbol: string[]; // Empty means effective for all symbols
