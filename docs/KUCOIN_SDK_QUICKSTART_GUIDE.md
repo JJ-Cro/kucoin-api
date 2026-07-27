@@ -1046,11 +1046,11 @@ Classic WebSockets are the production-oriented default in this guide. Every subs
 
 Useful Classic topics include:
 
-| Product | Public topics                                                                           | Private topics                                                                                              |
-| ------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| Spot    | `/market/ticker`, `/spotMarket/level2Depth5`, `/market/candles`, `/market/match`        | `/spotMarket/tradeOrdersV2`, `/account/balance`, `/spotMarket/advancedOrders`                               |
-| Margin  | `/indicator/index`, `/indicator/markPrice`                                              | `/margin/position`, `/margin/isolatedPosition:BTC-USDT`                                                     |
-| Futures | `/contractMarket/tickerV2`, `/contractMarket/level2Depth5`, `/contractMarket/execution` | `/contractMarket/tradeOrders:XBTUSDTM`, `/contractAccount/wallet`, `/contract/position:XBTUSDTM`            |
+| Product | Public topics                                                                           | Private topics                                                                                   |
+| ------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| Spot    | `/market/ticker`, `/spotMarket/level2Depth5`, `/market/candles`, `/market/match`        | `/spotMarket/tradeOrdersV2`, `/account/balance`, `/spotMarket/advancedOrders`                    |
+| Margin  | `/indicator/index`, `/indicator/markPrice`                                              | `/margin/position`, `/margin/isolatedPosition:BTC-USDT`                                          |
+| Futures | `/contractMarket/tickerV2`, `/contractMarket/level2Depth5`, `/contractMarket/execution` | `/contractMarket/tradeOrders:XBTUSDTM`, `/contractAccount/wallet`, `/contract/position:XBTUSDTM` |
 
 A Spot symbol uses `BTC-USDT`, while a Futures topic uses a contract such as `XBTUSDTM`. Append the symbol or contract where the channel requires it. Do not route a topic based only on the underlying asset.
 
