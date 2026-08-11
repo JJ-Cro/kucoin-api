@@ -26,8 +26,11 @@ export interface SubmitHFMarginOrderRequest {
   timeInForce?: 'GTC' | 'GTT' | 'IOC' | 'FOK';
   cancelAfter?: number;
   postOnly?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   hidden?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   iceberg?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   visibleSize?: string;
   funds?: string;
 }
@@ -81,8 +84,11 @@ export interface SubmitMarginOrderRequest {
   timeInForce?: 'GTC' | 'GTT' | 'IOC' | 'FOK';
   cancelAfter?: number;
   postOnly?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   hidden?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   iceberg?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   visibleSize?: string;
   funds?: string;
 }
@@ -214,8 +220,11 @@ export interface SubmitMarginStopOrderRequest {
   timeInForce?: 'GTC' | 'GTT' | 'IOC' | 'FOK'; // Time in force
   cancelAfter?: number; // Cancel after n seconds (GTT strategy)
   postOnly?: boolean; // Passive order labels
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   hidden?: boolean; // Hidden order
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   iceberg?: boolean; // Iceberg order
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   visibleSize?: string; // Visible size for iceberg orders
   funds?: string; // Order funds (for market orders)
 }

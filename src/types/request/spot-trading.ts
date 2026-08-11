@@ -57,8 +57,11 @@ export interface SubmitHFOrderRequest {
   timeInForce?: 'GTC' | 'GTT' | 'IOC' | 'FOK';
   cancelAfter?: number;
   postOnly?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   hidden?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   iceberg?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   visibleSize?: string;
 
   // Market order fields
@@ -122,8 +125,11 @@ export interface SubmitOrderRequest {
   timeInForce?: 'GTC' | 'GTT' | 'IOC' | 'FOK';
   cancelAfter?: number;
   postOnly?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   hidden?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   iceberg?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   visibleSize?: string;
   funds?: string;
 }
@@ -142,8 +148,11 @@ export interface SubmitMultipleOrdersRequest {
   timeInForce?: 'GTC' | 'GTT' | 'IOC' | 'FOK';
   cancelAfter?: number;
   postOnly?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   hidden?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   iceberg?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   visibleSize?: string;
 }
 
@@ -207,8 +216,11 @@ export interface SubmitStopOrderRequest {
   // Optional limit order fields
   cancelAfter?: number;
   postOnly?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   hidden?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   iceberg?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   visibleSize?: string;
 
   // Market order fields (when type is 'market')

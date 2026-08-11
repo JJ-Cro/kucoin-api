@@ -32,6 +32,7 @@ export interface CreateSubAPIRequest {
   passphrase: string;
   remark: string;
   permission?: string;
+  /** Required when permission includes Transfer (Withdraw); optional otherwise (as of 2026.08.12) */
   ipWhitelist?: string;
   expire?: string;
 }
@@ -41,6 +42,7 @@ export interface UpdateSubAPIRequest {
   apiKey: string;
   passphrase: string;
   permission?: string;
+  /** Required when permission includes Transfer (Withdraw); optional otherwise (as of 2026.08.12) */
   ipWhitelist?: string;
   expire?: string;
 }
@@ -139,8 +141,11 @@ export interface Order {
    */
   timeInForce?: 'GTC' | 'IOC' | 'RPI';
   postOnly?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   hidden?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   iceberg?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   visibleSize?: string;
   positionSide?: 'BOTH' | 'LONG' | 'SHORT';
 }
@@ -172,8 +177,11 @@ export interface SLTPOrder {
    */
   timeInForce?: 'GTC' | 'IOC' | 'RPI';
   postOnly?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   hidden?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   iceberg?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   visibleSize?: string;
 }
 export interface GetOrdersRequest {
@@ -296,8 +304,11 @@ export interface CopyTradeOrderRequest {
    */
   timeInForce?: 'GTC' | 'IOC' | 'RPI';
   postOnly?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   hidden?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   iceberg?: boolean;
+  /** @deprecated Hidden/iceberg discontinued 2026.08.03 - rejected with 400413 */
   visibleSize?: string;
 }
 

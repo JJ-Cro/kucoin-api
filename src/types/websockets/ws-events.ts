@@ -112,6 +112,34 @@ export interface WsUTAMarkPricePublicPush {
 }
 
 /**
+ * UTA WebSocket public Call Auction Info channel (`channel: callAuctionInfo`).
+ * Added 2026.07.17.
+ * @see https://www.kucoin.com/docs-new/3470268w0
+ */
+export interface WsUTACallAuctionInfoPublicPush {
+  T: string;
+  t?: string;
+  P: number;
+  d: {
+    s: string;
+    /** Estimated price */
+    eq?: number | string;
+    /** Estimated size */
+    es?: number | string;
+    /** Sell order range low price */
+    slp?: number | string;
+    /** Sell order range high price */
+    shp?: number | string;
+    /** Buy order range low price */
+    blp?: number | string;
+    /** Buy order range high price */
+    bhp?: number | string;
+    ts?: number;
+    [key: string]: string | number | boolean | undefined;
+  };
+}
+
+/**
  * Classic futures WebSocket `/contract/positionAll` funding fee settlement push.
  * `symbol` added to `data` field 2026.07.01.
  * @see https://www.kucoin.com/docs-new/3470088w0
