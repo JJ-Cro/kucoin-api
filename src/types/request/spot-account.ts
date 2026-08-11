@@ -64,6 +64,7 @@ export interface CreateSubAccountAPIRequest {
   passphrase: string;
   remark: string;
   permission?: string;
+  /** Required when permission includes Transfer (Withdraw); optional otherwise (as of 2026.08.12) */
   ipWhitelist?: string;
   expire?: string;
 }
@@ -73,6 +74,7 @@ export interface UpdateSubAccountAPIRequest {
   apiKey: string;
   passphrase: string;
   permission?: string;
+  /** Required when permission includes Transfer (Withdraw); optional otherwise (as of 2026.08.12) */
   ipWhitelist?: string;
   expire?: string;
 }

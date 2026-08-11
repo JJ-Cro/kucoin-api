@@ -20,15 +20,18 @@ import type {
   GetAccountPositionTiersRequestUTA,
   GetAnnouncementsRequestUTA,
   GetBorrowingRatesAndLimitsRequestUTA,
+  GetCallAuctionInfoRequestUTA,
   GetClassicAccountRequestUTA,
   GetCurrencyRequestUTA,
   GetCurrentFundingRateRequestUTA,
   GetDCPRequestUTA,
   GetDepositAddressRequestUTA,
+  GetDepositHistoryRequestUTA,
   GetFeeRateRequestUTA,
   GetFiatPriceRequestUTA,
   GetHistoryFundingRateRequestUTA,
   GetInterestHistoryRequestUTA,
+  GetInterestRateIndexRequestUTA,
   GetKlinesRequestUTA,
   GetLeverageRequestUTA,
   GetOpenOrderListRequestUTA,
@@ -40,6 +43,7 @@ import type {
   GetPrivateFundingFeeHistoryRequestUTA,
   GetRateLimitRequestUTA,
   GetServiceStatusRequestUTA,
+  GetSubAccountListRequestUTA,
   GetSubAccountRequestUTA,
   GetSymbolRequestUTA,
   GetThirdPartyCustodyCurrenciesRequestUTA,
@@ -48,6 +52,7 @@ import type {
   GetTradeHistoryRequestUTA,
   GetTradesRequestUTA,
   GetTransferQuotasRequestUTA,
+  GetWithdrawalHistoryRequestUTA,
   GetWithdrawalQuotasRequestUTA,
   ModifyIsolatedFuturesMarginRequestUTA,
   ModifyLeverageRequestUTA,
@@ -55,6 +60,7 @@ import type {
   PlaceOrderRequestUTA,
   SetAccountModeRequestUTA,
   SetDCPRequestUTA,
+  SetKcsFeeDeductionRequestUTA,
   SetSubAccountsRateLimitRequestUTA,
   SetSubAccountTransferPermissionRequestUTA,
   SubmitWithdrawRequestUTA,
@@ -79,14 +85,17 @@ import type {
   GetAccountOverviewResponseUTA,
   GetAnnouncementsResponseUTA,
   GetBorrowingRatesAndLimitsResponseUTA,
+  GetCallAuctionInfoResponseUTA,
   GetClassicAccountResponseUTA,
   GetCrossMarginConfigResponseUTA,
   GetCurrencyResponseUTA,
   GetCurrentFundingRateResponseUTA,
+  GetDepositHistoryResponseUTA,
   GetFeeRateResponseUTA,
   GetFiatPriceResponseUTA,
   GetHistoryFundingRateResponseUTA,
   GetInterestHistoryResponseUTA,
+  GetInterestRateIndexResponseUTA,
   GetKlinesResponseUTA,
   GetLeverageItemUTA,
   GetOpenOrderListResponseUTA,
@@ -97,12 +106,15 @@ import type {
   GetRateLimitCapResponseUTA,
   GetRateLimitResponseUTA,
   GetServiceStatusResponseUTA,
+  GetSubAccountListResponseUTA,
   GetSubAccountResponseUTA,
   GetSymbolResponseUTA,
   GetTickerResponseUTA,
   GetTradeHistoryResponseUTA,
   GetTradesResponseUTA,
+  GetTradeStatisticsResponseUTA,
   GetTransferQuotasResponseUTA,
+  GetWithdrawalHistoryResponseUTA,
   KYCRegionUTA,
   ModifyIsolatedFuturesMarginResponseUTA,
   ModifyMarginCrossLeverageResponseUTA,
@@ -110,6 +122,7 @@ import type {
   PlaceOrderResponseUTA,
   PositionTierUTA,
   PositionUTA,
+  SetKcsFeeDeductionResponseUTA,
   SetSubAccountsRateLimitResponseUTA,
   SubAccountTransferPermissionUTA,
   SubmitWithdrawResponseUTA,
@@ -285,6 +298,36 @@ export class UnifiedAPIClient extends BaseRestClient {
   }
 
   /**
+   * Get Interest Rate Index (UTA)
+   * Interest rate index records by symbol. Added 2026.07.17.
+   */
+  getInterestRateIndex(
+    params: GetInterestRateIndexRequestUTA,
+  ): Promise<APISuccessResponse<GetInterestRateIndexResponseUTA>> {
+    return this.get('api/ua/v1/market/interest-rate-index', params);
+  }
+
+  /**
+   * Platform 24h Market Statistics (UTA)
+   * Spot and futures 24h turnover. Added 2026.07.17.
+   */
+  getTradeStatistics(): Promise<
+    APISuccessResponse<GetTradeStatisticsResponseUTA>
+  > {
+    return this.get('api/ua/v1/trade-statistics');
+  }
+
+  /**
+   * Get Call Auction Info (UTA)
+   * Estimated price/size and bid/ask ranges during call auction. Added 2026.07.17.
+   */
+  getCallAuctionInfo(
+    params: GetCallAuctionInfoRequestUTA,
+  ): Promise<APISuccessResponse<GetCallAuctionInfoResponseUTA>> {
+    return this.get('api/ua/v1/market/call-auction-info', params);
+  }
+
+  /**
    *
    * REST - Unified Trading Account - Account
    *
@@ -327,6 +370,16 @@ export class UnifiedAPIClient extends BaseRestClient {
     params?: GetSubAccountRequestUTA,
   ): Promise<APISuccessResponse<GetSubAccountResponseUTA>> {
     return this.getPrivate('api/ua/v1/sub-account/balance', params);
+  }
+
+  /**
+   * Get Sub-account List (UTA)
+   * Paginated list of sub-accounts. Added 2026.08.03.
+   */
+  getSubAccountList(
+    params?: GetSubAccountListRequestUTA,
+  ): Promise<APISuccessResponse<GetSubAccountListResponseUTA>> {
+    return this.getPrivate('api/ua/v1/user/sub-account-list', params);
   }
 
   /**
@@ -479,6 +532,36 @@ export class UnifiedAPIClient extends BaseRestClient {
     params: GetDepositAddressRequestUTA,
   ): Promise<APISuccessResponse<DepositAddressUTA[]>> {
     return this.getPrivate('api/ua/v1/asset/deposit/address', params);
+  }
+
+  /**
+   * Get Deposit History (UTA)
+   * Paginated deposit records. Added 2026.08.03.
+   */
+  getDepositHistory(
+    params?: GetDepositHistoryRequestUTA,
+  ): Promise<APISuccessResponse<GetDepositHistoryResponseUTA>> {
+    return this.getPrivate('api/ua/v1/asset/deposit/history', params);
+  }
+
+  /**
+   * Get Withdrawal History (UTA)
+   * Paginated withdrawal records. Added 2026.08.03.
+   */
+  getWithdrawalHistory(
+    params?: GetWithdrawalHistoryRequestUTA,
+  ): Promise<APISuccessResponse<GetWithdrawalHistoryResponseUTA>> {
+    return this.getPrivate('api/ua/v1/asset/withdrawal/history', params);
+  }
+
+  /**
+   * KCS Fee Deduction Management (UTA)
+   * Enable or disable KCS fee deduction. Added 2026.08.03.
+   */
+  setKcsFeeDeduction(
+    params: SetKcsFeeDeductionRequestUTA,
+  ): Promise<APISuccessResponse<SetKcsFeeDeductionResponseUTA>> {
+    return this.getPrivate('api/ua/v1/account/fee/kcs-deduct', params);
   }
 
   /**

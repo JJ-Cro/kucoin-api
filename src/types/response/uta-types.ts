@@ -615,7 +615,12 @@ export interface TradeHistoryItemUTA {
   fee: string;
   feeCurrency: string;
   tax: string;
-  liquidity: 'TAKER' | 'MAKER';
+  /** e.g. NORMAL, ADL. When ADL, liquidityRole is empty (as of 2026.08.12) */
+  fillType?: string;
+  /** Empty when fillType is ADL (as of 2026.08.12) */
+  liquidityRole?: 'TAKER' | 'MAKER' | '';
+  /** @deprecated Prefer liquidityRole */
+  liquidity?: 'TAKER' | 'MAKER' | '';
   /** Execution time in nanoseconds (standardized as of 2026.01.12) */
   executionTime: number;
   /** Whether it is an RPI trade (added 2025.01.02, Futures only) */
@@ -701,6 +706,8 @@ export interface PositionUTA {
   maintenanceMargin: string;
   /** Timestamp when position was first opened (nanoseconds, standardized as of 2026.01.12) */
   creationTime: number;
+  /** Latest position update time (leverage/size changes). Added 2026.08.12 */
+  updateTime?: number;
   /** Estimated liquidation price (as of 2026.04.09) */
   liquidationPrice: string;
   /** ADL ranking percentile (0.12 = 12%). Added 2026.05.15 */
@@ -802,4 +809,114 @@ export interface SetSubAccountsRateLimitResultUTA {
 
 export interface SetSubAccountsRateLimitResponseUTA {
   items: SetSubAccountsRateLimitResultUTA[];
+}
+
+export interface SubAccountListItemUTA {
+  userId: string | null;
+  uid: number;
+  subName: string;
+  status: number;
+  type: number;
+  access: string;
+  createdAt: number;
+  remarks?: string;
+  tradeTypes: string[];
+  openedTradeTypes: string[];
+}
+
+export interface GetSubAccountListResponseUTA {
+  currentPage: number;
+  pageSize: number;
+  totalNum: number;
+  totalPage: number;
+  items: SubAccountListItemUTA[];
+}
+
+export interface SetKcsFeeDeductionResponseUTA {
+  enabled: boolean;
+}
+
+export interface DepositHistoryItemUTA {
+  id: string;
+  currency: string;
+  status: string;
+  address: string;
+  memo?: string;
+  isInner: boolean;
+  amount: string;
+  fee: string;
+  walletTxId?: string | null;
+  createdAt: number;
+  updatedAt: number;
+  remark?: string;
+  arrears?: boolean;
+  subStatus?: string | null;
+  url?: string | null;
+  statusRemark?: string;
+  preConfirms?: number;
+  confirms?: number;
+  currentConfirms?: number;
+  chainId?: string;
+}
+
+export interface GetDepositHistoryResponseUTA {
+  currentPage: number;
+  pageSize: number;
+  totalNum: number;
+  totalPage: number;
+  items: DepositHistoryItemUTA[];
+}
+
+export interface WithdrawalHistoryItemUTA {
+  id: string;
+  currency: string;
+  status: string;
+  address: string;
+  memo?: string;
+  isInner: boolean;
+  amount: string;
+  fee: string;
+  failureReason?: string;
+  failureReasonMsg?: string | null;
+  walletTxId?: string | null;
+  createdAt: number;
+  updatedAt: number;
+  remark?: string;
+  subStatus?: string | null;
+  chainId?: string;
+}
+
+export interface GetWithdrawalHistoryResponseUTA {
+  currentPage: number;
+  pageSize: number;
+  totalNum: number;
+  totalPage: number;
+  items: WithdrawalHistoryItemUTA[];
+}
+
+export interface InterestRateIndexItemUTA {
+  ts: number;
+  symbol: string;
+  interestRate: string;
+}
+
+export interface GetInterestRateIndexResponseUTA {
+  items: InterestRateIndexItemUTA[];
+  lastId?: number;
+}
+
+export interface GetTradeStatisticsResponseUTA {
+  spot: { turnoverOf24h: string };
+  futures: { turnoverOf24h: string };
+}
+
+export interface GetCallAuctionInfoResponseUTA {
+  symbol: string;
+  estimatedPrice: string;
+  estimatedSize: string;
+  sellOrderRangeLowPrice: string;
+  sellOrderRangeHighPrice: string;
+  buyOrderRangeLowPrice: string;
+  buyOrderRangeHighPrice: string;
+  time: number;
 }

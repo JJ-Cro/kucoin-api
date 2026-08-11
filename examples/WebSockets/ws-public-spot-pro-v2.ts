@@ -148,6 +148,15 @@ async function start() {
             symbol: 'BTC-USDT',
           },
         },
+        // UTA public Call Auction Info channel
+        // https://www.kucoin.com/docs-new/3470268w0
+        {
+          topic: 'callAuctionInfo',
+          payload: {
+            tradeType: 'SPOT',
+            symbol: 'BTC-USDT',
+          },
+        },
       ],
       WS_KEY_MAP.spotPublicProV2,
     );

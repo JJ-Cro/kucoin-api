@@ -508,3 +508,45 @@ export interface GetAccountPositionTiersRequestUTA {
   marginMode?: 'ISOLATED' | 'CROSS'; // Not support cross for the time being
   data?: 'RISK_LIMIT' | 'BORROW'; // Not support borrow for the time being
 }
+
+export interface GetSubAccountListRequestUTA {
+  currentPage?: number;
+  pageSize?: number;
+}
+
+export interface SetKcsFeeDeductionRequestUTA {
+  /** true to enable KCS fee deduction, false to disable */
+  enabled: boolean;
+}
+
+export interface GetDepositHistoryRequestUTA {
+  currency?: string;
+  id?: string;
+  startAt?: number;
+  endAt?: number;
+  currentPage?: number;
+  pageSize?: number;
+  status?: string;
+}
+
+export interface GetWithdrawalHistoryRequestUTA {
+  currency?: string;
+  id?: string;
+  currentPage?: number;
+  pageSize?: number;
+  startAt?: number;
+  endAt?: number;
+  status?: string;
+}
+
+export interface GetInterestRateIndexRequestUTA {
+  symbol: string;
+  startAt?: number;
+  endAt?: number;
+  lastId?: number;
+  pageSize?: number;
+}
+
+export interface GetCallAuctionInfoRequestUTA {
+  symbol: string;
+}
