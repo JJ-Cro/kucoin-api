@@ -19,9 +19,6 @@
 
 [1]: https://www.npmjs.com/package/kucoin-api
 
-> [!TIP]
-> Upcoming change: As part of the Siebly.io brand, this SDK is now hosted under our [Siebly.io GitHub organisation](https://github.com/sieblyio). The migration is seamless and requires no user changes.
-
 Updated & performant JavaScript & Node.js SDK for the KuCoin REST APIs and WebSockets:
 
 - Professional, robust & performant KuCoin SDK with extensive production use in live trading environments.
@@ -47,6 +44,7 @@ Updated & performant JavaScript & Node.js SDK for the KuCoin REST APIs and WebSo
 - Proxy support via axios integration.
 - Active community support & collaboration in telegram: [Node.js Algo Traders](https://t.me/nodetraders).
 - QuickStart Guide: [Kucoin JavaScript QuickStart Guide](https://siebly.io/sdk/kucoin/javascript)
+- KuCoin JavaScript Tutorial: [KuCoin JavaScript REST API and WebSocket Tutorial](https://siebly.io/sdk/kucoin/javascript/tutorial)
 
 ## Table of Contents
 

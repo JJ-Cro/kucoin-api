@@ -214,10 +214,10 @@ siebly:
         href: /examples/Kucoin
       - heading: Endpoint map
         summary: Find the SDK method for each supported KuCoin endpoint.
-        href: https://github.com/tiagosiebler/kucoin-api/blob/master/docs/endpointFunctionList.md
+        href: https://github.com/sieblyio/kucoin-api/blob/master/docs/endpointFunctionList.md
       - heading: Source repository
         summary: Browse SDK source, releases, issues, and endpoint coverage on GitHub.
-        href: https://github.com/tiagosiebler/kucoin-api
+        href: https://github.com/sieblyio/kucoin-api
 -->
 
 # KuCoin API JavaScript Tutorial for Node.js
@@ -237,7 +237,7 @@ The SDK handles private request signing, connection-token requests, product-spec
 
 - KuCoin JavaScript SDK by Siebly: [`kucoin-api`](https://siebly.io/sdk/kucoin/javascript)
 - npm package: [`kucoin-api`](https://www.npmjs.com/package/kucoin-api)
-- GitHub repository: [`tiagosiebler/kucoin-api`](https://github.com/tiagosiebler/kucoin-api)
+- GitHub repository: [`sieblyio/kucoin-api`](https://github.com/sieblyio/kucoin-api)
 - SDK examples: [KuCoin SDK examples](https://siebly.io/examples/Kucoin)
 - SDK endpoint map: [KuCoin JavaScript endpoint reference](./endpointFunctionList.md)
 - Official API documentation: [KuCoin API](https://www.kucoin.com/docs-new/)
@@ -1777,9 +1777,9 @@ Allow the SDK to restore cached subscriptions, then reload affected balances, op
 - Find methods in the [complete endpoint map](./endpointFunctionList.md).
 - Review the [KuCoin SDK page](https://siebly.io/sdk/kucoin/javascript).
 - Install or update [`kucoin-api` from npm](https://www.npmjs.com/package/kucoin-api).
-- Browse the [`kucoin-api` source repository](https://github.com/tiagosiebler/kucoin-api).
+- Browse the [`kucoin-api` source repository](https://github.com/sieblyio/kucoin-api).
 - Read the official [KuCoin API documentation](https://www.kucoin.com/docs-new/).
 - Review [Exchange State](https://siebly.io/reference/exchange-state) before building private state management.
 - Use [Runtime Workflows](https://siebly.io/reference/runtime-workflows) when designing startup, reconnect, and reconciliation behavior.
 - Open the [Siebly glossary](https://siebly.io/reference/glossary) for order, stream, and recovery terms.
-- Report SDK issues in the [`kucoin-api` GitHub repository](https://github.com/tiagosiebler/kucoin-api/issues).
+- Report SDK issues in the [`kucoin-api` GitHub repository](https://github.com/sieblyio/kucoin-api/issues).
