@@ -7,8 +7,10 @@ import {
   FastApiWithdrawApplyRequest,
   GetBrokerDepositListRequest,
   GetBrokerInfoRequest,
+  GetBrokerMarkupFeeRequest,
   GetBrokerSubAccountApisRequest,
   GetBrokerSubAccountsRequest,
+  SetBrokerMarkupFeeRequest,
   UpdateBrokerSubAccountApiRequest,
 } from './types/request/broker.types.js';
 import {
@@ -20,7 +22,9 @@ import {
   CreateBrokerSubAccountApiResponse,
   CreateBrokerSubAccountResponse,
   FastApiWithdrawApplyResponse,
+  GetBrokerMarkupFeeResponse,
   GetBrokerSubAccountsResponse,
+  SetBrokerMarkupFeeResponse,
 } from './types/response/broker.types.js';
 import { APISuccessResponse } from './types/response/shared.types.js';
 
@@ -264,5 +268,25 @@ export class BrokerClient extends BaseRestClient {
     params: FastApiWithdrawApplyRequest,
   ): Promise<APISuccessResponse<FastApiWithdrawApplyResponse>> {
     return this.postPrivate('api/v2/broker/withdrawal', params);
+  }
+
+  /**
+   * Set Markup Fee
+   * Maker and taker markup must be set together. Both 0 cancels markup.
+   */
+  setMarkupFee(
+    params: SetBrokerMarkupFeeRequest,
+  ): Promise<APISuccessResponse<SetBrokerMarkupFeeResponse>> {
+    return this.postPrivate('api/v1/broker/nd/mark-up', params);
+  }
+
+  /**
+   * Get Markup Fee
+   * Default markup plus optional per-UID items.
+   */
+  getMarkupFee(
+    params?: GetBrokerMarkupFeeRequest,
+  ): Promise<APISuccessResponse<GetBrokerMarkupFeeResponse>> {
+    return this.getPrivate('api/v1/broker/nd/mark-up', params);
   }
 }

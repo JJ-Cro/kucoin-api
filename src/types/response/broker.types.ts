@@ -148,3 +148,27 @@ export interface BrokerWithdrawalRecord {
   createdAt: number;
   updatedAt: number;
 }
+
+export interface SetBrokerMarkupFeeResponse {
+  effectiveType: string;
+  subUids: string | null;
+  tradeType: string;
+  makerMarkUp: string;
+  takerMarkUp: string;
+  effectAt: number;
+  createdAt: number;
+}
+
+export interface BrokerMarkupFeeItem {
+  uid?: number;
+  spotMakerMarkUp: string;
+  spotTakerMarkUp: string;
+  futuresMakerMarkUp: string;
+  futuresTakerMarkUp: string;
+  updatedAt: number;
+}
+
+export interface GetBrokerMarkupFeeResponse {
+  defaultMarkUp: BrokerMarkupFeeItem;
+  items: BrokerMarkupFeeItem[];
+}

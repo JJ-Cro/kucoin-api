@@ -14,7 +14,7 @@ const client = new UnifiedAPIClient({
   apiPassphrase: 'apiPassPhraseHere',
 });
 
-client.placeOrder(params)
+client.amendOrder(params)
   .then((response) => {
     console.log(response);
   })

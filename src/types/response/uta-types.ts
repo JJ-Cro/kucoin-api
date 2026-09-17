@@ -28,14 +28,25 @@ export interface CurrencyChainUTA {
   minWithdrawFee: string;
   isWithdrawEnabled: boolean;
   isDepositEnabled: boolean;
-  confirms: number;
+  confirms?: number;
   preConfirms: number;
-  contractAddress: string;
+  contractAddress?: string;
   withdrawPrecision: number;
   maxWithdrawSize: string | null;
   maxDepositSize: string | null;
   needTag: boolean;
-  chainId: string;
+  /** @deprecated UTA V2 renamed to chain (2026.08.27) */
+  chainId?: string;
+  /** UTA V2 chain identifier (2026.08.27). Replaces chainId. */
+  chain?: string;
+  addressRegex?: string;
+  memoRegex?: string;
+  depositFeeRate?: string;
+  depositTierFee?: string;
+  fixedDepositFee?: string;
+  maxDepositFee?: string;
+  maxWithdrawFee?: string;
+  isMemoRequired?: boolean;
 }
 
 export interface GetCurrencyResponseUTA {
@@ -43,12 +54,19 @@ export interface GetCurrencyResponseUTA {
   name: string;
   fullName: string;
   precision: number;
-  confirms: number | null;
-  contractAddress: string | null;
-  isMarginEnabled: boolean;
-  isDebitEnabled: boolean;
+  confirms?: number | null;
+  contractAddress?: string | null;
+  /** Removed from UTA V2 Get Currencies currency-level payload (2026.08.27) */
+  isMarginEnabled?: boolean;
+  /** Removed from UTA V2 Get Currencies currency-level payload (2026.08.27) */
+  isDebitEnabled?: boolean;
+  /** UTA V2 chain list (2026.08.27). Replaces items. */
   list: CurrencyChainUTA[];
+  /** @deprecated UTA V2 renamed to list */
+  items?: CurrencyChainUTA[];
 }
+
+export type GetCurrenciesResponseUTA = GetCurrencyResponseUTA[];
 
 export interface SymbolUTA {
   symbol: string;
@@ -64,10 +82,22 @@ export interface SymbolUTA {
   quoteOrderStep?: string;
   tickSize?: string | number;
   feeCurrency?: string;
-  tradingStatus?: string;
+  tradingStatus?:
+    | string
+    | 'TradingEnabled'
+    | 'TradingDisabled'
+    | 'Init'
+    | 'Open'
+    | 'PrepareSettled'
+    | 'BeingSettled'
+    | 'Settled'
+    | 'Paused'
+    | 'Closed'
+    | 'CancelOnly';
   marginMode?: string;
   priceLimitRatio?: string;
-  feeCategory?: number;
+  /** UTA V2: classA / classB / classC. Numeric 1/2/3 remains on older payloads. */
+  feeCategory?: number | 'classA' | 'classB' | 'classC' | string;
   makerFeeCoefficient?: string;
   takerFeeCoefficient?: string;
   st?: boolean;
@@ -75,8 +105,8 @@ export interface SymbolUTA {
   contractType?: string;
   isInverse?: boolean;
   launchTime?: number;
-  expiryTime?: number | null;
-  settlementTime?: number | null;
+  expiryTime?: number | string | null;
+  settlementTime?: number | string | null;
   maxPrice?: string | number;
   lotSize?: string | number;
   /**
@@ -88,7 +118,7 @@ export interface SymbolUTA {
   makerFeeRate?: string | number;
   takerFeeRate?: string | number;
   settlementFeeRate?: string | number | null;
-  maxLeverage?: number;
+  maxLeverage?: number | string;
   indexSourceExchanges?: string[];
   k?: string | number;
   m?: string | number;
@@ -105,6 +135,16 @@ export interface SymbolUTA {
   displaySymbol?: string;
   /** Display base currency for Futures (added 2025.12.26 & 2026.01.12) */
   displayBaseCurrency?: string;
+  maxMarketOrderSize?: string;
+  preMarketToPerpDate?: number | string | null;
+  minFunds?: string;
+  callauctionIsEnabled?: boolean;
+  callauctionPriceFloor?: string | null;
+  callauctionPriceCeiling?: string | null;
+  callauctionFirstStageStartTime?: number | string | null;
+  callauctionSecondStageStartTime?: number | string | null;
+  callauctionThirdStageStartTime?: number | string | null;
+  tradingStartTime?: number | string | null;
 }
 
 export interface GetSymbolResponseUTA {
@@ -194,16 +234,34 @@ export interface GetKlinesResponseUTA {
 
 export interface GetCurrentFundingRateResponseUTA {
   symbol: string;
-  nextFundingRate: number;
+  nextFundingRate: number | string;
   fundingTime: number;
-  fundingRateCap: number;
-  fundingRateFloor: number;
+  fundingRateCap: number | string;
+  fundingRateFloor: number | string;
   /** Current funding settlement interval (ms); as of 2026.04.19 */
   currentGranularity: number;
   /** New interval after change (ms); as of 2026.04.19 */
   newGranularity: number;
   /** When newGranularity takes effect (ms); as of 2026.04.19 */
   newGranularityStartTime: number;
+}
+
+export interface GetIndexPriceDecompositionUTA {
+  exchange: string;
+  price: string;
+  weight: string;
+}
+
+export interface GetIndexPriceItemUTA {
+  symbol: string;
+  granularity: number;
+  ts: number;
+  indexPrice: string;
+  decompositionList?: GetIndexPriceDecompositionUTA[];
+}
+
+export interface GetIndexPriceResponseUTA {
+  items: GetIndexPriceItemUTA[];
 }
 
 export interface FundingRateHistoryItemUTA {
@@ -278,7 +336,10 @@ export interface GetServiceStatusResponseUTA {
 
 export interface AccountCurrencyUTA {
   currency: string;
-  hold: string;
+  /** @deprecated UTA V2 renamed to locked (2026.08.27) */
+  hold?: string;
+  /** UTA V2 locked amount (2026.08.27). Replaces hold. */
+  locked?: string;
   available: string;
   balance: string;
   equity: string;
@@ -295,7 +356,9 @@ export interface AccountCurrencyUTA {
   isolatedOrderMargin?: string;
   isolatedFundingFeeMargin?: string;
   isolatedUnPnl?: string;
+  /** @deprecated UTA V2 renamed to liabilityPrincipal (2026.08.27) */
   liabilityPrinciple?: string;
+  liabilityPrincipal?: string;
   liabilityInterest?: string;
   unrealisedPnl?: string;
 }
@@ -325,7 +388,8 @@ export interface GetAccountOverviewResponseUTA {
 
 export interface SubAccountUserUTA {
   uid: number;
-  accountList: {
+  /** @deprecated UTA V2 renamed to accounts (2026.08.27) */
+  accountList?: {
     accountType:
       | 'FUNDING'
       | 'SPOT'
@@ -336,6 +400,28 @@ export interface SubAccountUserUTA {
       | 'UNIFIED';
     accountSubType: string | null;
     currencyList: AccountCurrencyUTA[];
+  }[];
+  /** UTA V2 accounts list (2026.08.27). Replaces accountList. OPTIONS removed. */
+  accounts?: {
+    accountType:
+      | 'FUNDING'
+      | 'SPOT'
+      | 'FUTURES'
+      | 'CROSS'
+      | 'ISOLATED'
+      | 'UNIFIED';
+    /** UTA V2 renamed from accountSubType */
+    subAccountType?: string | null;
+    /** @deprecated UTA V2 renamed to subAccountType */
+    accountSubType?: string | null;
+    /** UTA V2 renamed from currencyList */
+    currencies?: AccountCurrencyUTA[];
+    /** @deprecated UTA V2 renamed to currencies */
+    currencyList?: AccountCurrencyUTA[];
+    /** UTA V2 renamed from liabilityPrinciple */
+    liabilityPrincipal?: string;
+    /** @deprecated UTA V2 renamed to liabilityPrincipal */
+    liabilityPrinciple?: string;
   }[];
 }
 
@@ -422,14 +508,20 @@ export interface GetInterestHistoryResponseUTA {
 
 export interface DepositAddressUTA {
   address: string;
-  memo: string;
-  chainId: string;
-  to: 'FUNDING' | 'SPOT' | 'UNIFIED';
+  memo?: string;
+  /** @deprecated UTA V2 renamed to chain (2026.08.27) */
+  chainId?: string;
+  /** UTA V2 chain identifier (2026.08.27). Replaces chainId. */
+  chain?: string;
+  /** @deprecated UTA V2 renamed to toAccountType (2026.08.27) */
+  to?: 'FUNDING' | 'SPOT' | 'UNIFIED';
+  /** UTA V2 destination account type (2026.08.27). Replaces to. */
+  toAccountType?: 'FUNDING' | 'SPOT' | 'UNIFIED';
   currency: string;
   contractAddress: string;
   chainName: string;
   expirationDate: string;
-  remark: string;
+  remark?: string;
 }
 
 export interface WithdrawalQuotasUTA {
@@ -439,16 +531,27 @@ export interface WithdrawalQuotasUTA {
   quotaCurrency: string;
   limitQuotaCurrencyAmount: string;
   usedQuotaCurrencyAmount: string;
-  remainAmount: string;
-  availableAmount: string;
-  withdrawMinFee: string;
-  innerWithdrawMinFee: string;
+  remainAmount?: string;
+  availableAmount?: string;
+  withdrawMinFee?: string;
+  innerWithdrawMinFee?: string;
+  /** UTA V2 remaining quota (2026.08.27). Replaces remainAmount. */
+  remainingQuotaAmount?: string;
+  /** UTA V2 available withdraw amount (2026.08.27). Replaces availableAmount. */
+  availableWithdrawAmount?: string;
+  /** UTA V2 min withdraw fee (2026.08.27). Replaces withdrawMinFee. */
+  minWithdrawFee?: string;
+  /** UTA V2 min inner withdraw fee (2026.08.27). Replaces innerWithdrawMinFee. */
+  minInnerWithdrawFee?: string;
   withdrawMinSize: string;
   isWithdrawEnabled: boolean;
   precision: number;
   reason: string | null;
   lockedAmount: string;
-  chainId: string;
+  /** @deprecated UTA V2 renamed to chain (2026.08.27) */
+  chainId?: string;
+  /** UTA V2 chain identifier (2026.08.27). Replaces chainId. */
+  chain?: string;
   chainName: string;
 }
 
@@ -564,7 +667,8 @@ export interface OrderDetailsUTA {
    * Time in Force. Added 'RPI' as of 2025.01.02
    */
   timeInForce: 'GTC' | 'IOC' | 'GTT' | 'FOK' | 'RPI';
-  cancelReason?: number;
+  /** UTA V1+V2: enum value instead of descriptive cancellation reason (2026.08.27) */
+  cancelReason?: number | string;
   cancelSize: string;
   cancelAfter?: number;
   triggerDirection?: 'UP' | 'DOWN';
@@ -578,6 +682,8 @@ export interface OrderDetailsUTA {
   slOrderPrice?: string;
   postOnly?: boolean;
   tags?: string;
+  /** Broker tag, max 50 chars (2026.09.21) */
+  brokerTag?: string;
   triggerOrderId?: string;
   /** Order creation time in nanoseconds (standardized as of 2026.01.12) */
   orderTime: number;
@@ -625,6 +731,20 @@ export interface TradeHistoryItemUTA {
   executionTime: number;
   /** Whether it is an RPI trade (added 2025.01.02, Futures only) */
   isRpiTrade?: boolean;
+  /**
+   * Fill PnL. Empty string when data is before 2026.09.05 (UTC-8) (2026.09.21).
+   * When fillType is ADL/LIQUID/SETTLEMENT, size is a positive value (2026.08.20).
+   */
+  fillPnl?: string;
+  clientOid?: string;
+  marginMode?: 'ISOLATED' | 'CROSS';
+  tradeType?: 'SPOT' | 'FUTURES' | 'ISOLATED' | 'CROSS' | 'MARGIN';
+  orderType?: 'LIMIT' | 'MARKET';
+}
+
+export interface AmendOrderResponseUTA {
+  orderId: string;
+  clientOid: string | null;
 }
 
 export interface GetTradeHistoryResponseUTA {

@@ -365,71 +365,73 @@ This table includes all endpoints from the official Exchange API docs and corres
 
 | Function | AUTH | HTTP Method | Endpoint |
 | -------- | :------: | :------: | -------- |
-| [getAnnouncements()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L156) |  | GET | `api/ua/v1/market/announcement` |
-| [getCurrency()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L166) |  | GET | `api/ua/v1/market/currency` |
-| [getThirdPartyCustodyCurrencies()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L176) |  | GET | `api/ua/v1/oes/currency` |
-| [getSymbols()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L186) |  | GET | `api/ua/v1/market/instrument` |
-| [getTickers()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L196) |  | GET | `api/ua/v1/market/ticker` |
-| [getTrades()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L206) |  | GET | `api/ua/v1/market/trade` |
-| [getOrderBook()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L216) |  | GET | `api/ua/v1/market/orderbook` |
-| [getKlines()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L226) |  | GET | `api/ua/v1/market/kline` |
-| [getCurrentFundingRate()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L236) |  | GET | `api/ua/v1/market/funding-rate` |
-| [getHistoryFundingRate()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L246) |  | GET | `api/ua/v1/market/funding-rate-history` |
-| [getCrossMarginConfig()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L256) |  | GET | `api/ua/v1/market/cross-config` |
-| [getBorrowableCurrencies()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L266) |  | GET | `api/ua/v1/market/borrowable-currency` |
-| [getServiceStatus()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L276) |  | GET | `api/ua/v1/server/status` |
-| [getClientIPAddress()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L286) |  | GET | `api/ua/v1/user/my-ip` |
-| [getFiatPrice()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L294) |  | GET | `api/ua/v1/market/fiat-price` |
-| [getInterestRateIndex()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L304) |  | GET | `api/ua/v1/market/interest-rate-index` |
-| [getTradeStatistics()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L314) |  | GET | `api/ua/v1/trade-statistics` |
-| [getCallAuctionInfo()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L324) |  | GET | `api/ua/v1/market/call-auction-info` |
-| [getClassicAccount()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L341) | :closed_lock_with_key:  | GET | `api/ua/v1/account/balance` |
-| [getAccount()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L351) | :closed_lock_with_key:  | GET | `api/ua/v1/unified/account/balance` |
-| [getAccountOverview()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L359) | :closed_lock_with_key:  | GET | `api/ua/v1/unified/account/overview` |
-| [getSubAccount()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L369) | :closed_lock_with_key:  | GET | `api/ua/v1/sub-account/balance` |
-| [getSubAccountList()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L379) | :closed_lock_with_key:  | GET | `api/ua/v1/user/sub-account-list` |
-| [getTransferQuotas()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L391) | :closed_lock_with_key:  | GET | `api/ua/v1/account/transfer-quota` |
-| [flexTransfer()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L402) | :closed_lock_with_key:  | POST | `api/ua/v1/account/transfer` |
-| [setSubAccountTransferPermission()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L412) | :closed_lock_with_key:  | POST | `api/ua/v1/sub-account/canTransferOut` |
-| [getAccountMode()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L422) | :closed_lock_with_key:  | GET | `api/ua/v1/account/mode` |
-| [setAccountMode()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L430) | :closed_lock_with_key:  | POST | `api/ua/v1/account/mode` |
-| [getFeeRate()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L442) | :closed_lock_with_key:  | GET | `api/ua/v1/user/fee-rate` |
-| [getAccountLedger()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L458) | :closed_lock_with_key:  | GET | `api/ua/v1/account/ledger` |
-| [getInterestHistory()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L472) | :closed_lock_with_key:  | GET | `api/ua/v1/account/interest-history` |
-| [getBorrowingRatesAndLimits()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L482) | :closed_lock_with_key:  | GET | `api/ua/v1/account/interest-limits` |
-| [modifyLeverage()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L492) | :closed_lock_with_key:  | POST | `api/ua/v1/unified/account/modify-leverage` |
-| [modifyMarginCrossLeverage()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L505) | :closed_lock_with_key:  | POST | `api/ua/v1/{accountMode}/account/modify-leverage-margin-cross` |
-| [getLeverage()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L519) | :closed_lock_with_key:  | GET | `api/ua/v1/unified/account/leverage` |
-| [getDepositAddress()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L531) | :closed_lock_with_key:  | GET | `api/ua/v1/asset/deposit/address` |
-| [getDepositHistory()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L541) | :closed_lock_with_key:  | GET | `api/ua/v1/asset/deposit/history` |
-| [getWithdrawalHistory()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L551) | :closed_lock_with_key:  | GET | `api/ua/v1/asset/withdrawal/history` |
-| [setKcsFeeDeduction()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L561) | :closed_lock_with_key:  | GET | `api/ua/v1/account/fee/kcs-deduct` |
-| [getApiKeyInfo()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L572) | :closed_lock_with_key:  | GET | `api/ua/v1/user/api-key` |
-| [getKYCRegions()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L580) |  | GET | `api/ua/v1/user/kyc-region` |
-| [getRateLimit()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L588) | :closed_lock_with_key:  | GET | `api/ua/v1/rate-limit/query` |
-| [getAllRateLimit()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L598) | :closed_lock_with_key:  | GET | `api/ua/v1/rate-limit/query-all` |
-| [getRateLimitCap()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L606) | :closed_lock_with_key:  | GET | `api/ua/v1/rate-limit/query-cap` |
-| [setSubAccountsRateLimit()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L614) | :closed_lock_with_key:  | POST | `api/ua/v1/rate-limit/set` |
-| [addSubAccount()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L624) | :closed_lock_with_key:  | POST | `api/ua/v1/user/sub/create-sub-account` |
-| [addSubAccountApi()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L634) | :closed_lock_with_key:  | POST | `api/ua/v1/user/create-sub-api-key` |
-| [getWithdrawalQuotas()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L644) | :closed_lock_with_key:  | GET | `api/ua/v1/withdrawals/quotas` |
-| [submitWithdraw()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L654) | :closed_lock_with_key:  | POST | `api/ua/v1/withdrawal` |
-| [cancelWithdrawal()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L664) | :closed_lock_with_key:  | DELETE | `api/ua/v1/withdrawal` |
-| [getThirdPartyCustodyQuota()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L674) | :closed_lock_with_key:  | GET | `api/ua/v1/oes/custody-quota` |
-| [placeOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L695) | :closed_lock_with_key:  | GET | `api/ua/v1/{accountMode}/order/detail` |
-| [batchPlaceOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L728) | :closed_lock_with_key:  | GET | `api/ua/v1/{accountMode}/order/detail` |
-| [getOrderDetails()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L753) | :closed_lock_with_key:  | GET | `api/ua/v1/{accountMode}/order/detail` |
-| [getOpenOrderList()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L767) | :closed_lock_with_key:  | GET | `api/ua/v1/{accountMode}/order/open-list` |
-| [getOrderHistory()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L781) | :closed_lock_with_key:  | GET | `api/ua/v1/{accountMode}/order/history` |
-| [getTradeHistory()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L794) | :closed_lock_with_key:  | GET | `api/ua/v1/{accountMode}/order/execution` |
-| [cancelOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L806) | :closed_lock_with_key:  | POST | `api/ua/v1/unified/order/cancel-all` |
-| [batchCancelOrders()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L823) | :closed_lock_with_key:  | POST | `api/ua/v1/unified/order/cancel-all` |
-| [batchCancelOrdersBySymbol()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L838) | :closed_lock_with_key:  | POST | `api/ua/v1/unified/order/cancel-all` |
-| [setDCP()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L851) | :closed_lock_with_key:  | POST | `api/ua/v1/dcp/set` |
-| [getDCP()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L862) | :closed_lock_with_key:  | GET | `api/ua/v1/dcp/query` |
-| [getPositionList()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L882) | :closed_lock_with_key:  | GET | `api/ua/v1/unified/position/open-list` |
-| [batchModifyMarginMode()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L892) | :closed_lock_with_key:  | POST | `api/ua/v1/unified/position/margin-mode` |
-| [modifyIsolatedFuturesMargin()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L902) | :closed_lock_with_key:  | POST | `api/ua/v1/unified/position/modify-margin` |
-| [getPositionsHistory()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L915) | :closed_lock_with_key:  | GET | `api/ua/v1/position/history` |
-| [getPrivateFundingFeeHistory()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L925) | :closed_lock_with_key:  | GET | `api/ua/v1/position/funding-history` |
-| [getAccountPositionTiers()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L936) | :closed_lock_with_key:  | GET | `api/ua/v1/{accountMode}/position/tiers` |
+| [getAnnouncements()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L162) |  | GET | `api/ua/v2/market/announcement` |
+| [getCurrency()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L172) |  | GET | `api/ua/v2/market/currency` |
+| [getCurrencies()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L182) |  | GET | `api/ua/v2/asset/currencies` |
+| [getThirdPartyCustodyCurrencies()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L192) |  | GET | `api/ua/v2/oes/currency` |
+| [getSymbols()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L202) |  | GET | `api/ua/v2/market/instrument` |
+| [getTickers()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L212) |  | GET | `api/ua/v2/market/ticker` |
+| [getTrades()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L222) |  | GET | `api/ua/v2/market/trade` |
+| [getOrderBook()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L232) |  | GET | `api/ua/v2/market/orderbook` |
+| [getKlines()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L242) |  | GET | `api/ua/v2/market/kline` |
+| [getIndexPrice()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L252) |  | GET | `api/ua/v2/market/index-price` |
+| [getCurrentFundingRate()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L262) |  | GET | `api/ua/v2/market/funding-rate` |
+| [getHistoryFundingRate()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L276) |  | GET | `api/ua/v2/market/funding-rate-history` |
+| [getCrossMarginConfig()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L286) |  | GET | `api/ua/v1/market/cross-config` |
+| [getBorrowableCurrencies()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L296) |  | GET | `api/ua/v2/market/borrowable-currency` |
+| [getServiceStatus()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L306) |  | GET | `api/ua/v2/server/status` |
+| [getClientIPAddress()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L316) |  | GET | `api/ua/v2/user/my-ip` |
+| [getFiatPrice()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L324) |  | GET | `api/ua/v2/market/fiat-price` |
+| [getInterestRateIndex()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L334) |  | GET | `api/ua/v2/market/interest-rate-index` |
+| [getTradeStatistics()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L344) |  | GET | `api/ua/v2/trade-statistics` |
+| [getCallAuctionInfo()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L354) |  | GET | `api/ua/v2/market/call-auction-info` |
+| [getClassicAccount()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L371) | :closed_lock_with_key:  | GET | `api/ua/v2/account/balance` |
+| [getAccount()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L381) | :closed_lock_with_key:  | GET | `api/ua/v2/unified/account/balance` |
+| [getAccountOverview()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L389) | :closed_lock_with_key:  | GET | `api/ua/v2/unified/account/overview` |
+| [getSubAccount()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L399) | :closed_lock_with_key:  | GET | `api/ua/v2/sub-account/balance` |
+| [getSubAccountList()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L409) | :closed_lock_with_key:  | GET | `api/ua/v2/user/sub-account-list` |
+| [getTransferQuotas()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L421) | :closed_lock_with_key:  | GET | `api/ua/v2/account/transfer-quota` |
+| [flexTransfer()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L432) | :closed_lock_with_key:  | POST | `api/ua/v2/account/transfer` |
+| [setSubAccountTransferPermission()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L442) | :closed_lock_with_key:  | POST | `api/ua/v2/sub-account/canTransferOut` |
+| [getAccountMode()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L452) | :closed_lock_with_key:  | GET | `api/ua/v2/account/mode` |
+| [setAccountMode()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L460) | :closed_lock_with_key:  | POST | `api/ua/v2/account/mode` |
+| [getFeeRate()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L472) | :closed_lock_with_key:  | GET | `api/ua/v2/user/fee-rate` |
+| [getAccountLedger()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L488) | :closed_lock_with_key:  | GET | `api/ua/v2/account/ledger` |
+| [getInterestHistory()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L502) | :closed_lock_with_key:  | GET | `api/ua/v2/account/interest-history` |
+| [getBorrowingRatesAndLimits()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L512) | :closed_lock_with_key:  | GET | `api/ua/v2/account/interest-limits` |
+| [modifyLeverage()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L522) | :closed_lock_with_key:  | POST | `api/ua/v2/unified/account/modify-leverage` |
+| [modifyMarginCrossLeverage()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L535) | :closed_lock_with_key:  | GET | `api/ua/v2/unified/account/leverage` |
+| [getLeverage()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L551) | :closed_lock_with_key:  | GET | `api/ua/v2/unified/account/leverage` |
+| [getDepositAddress()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L563) | :closed_lock_with_key:  | GET | `api/ua/v2/asset/deposit/address` |
+| [getDepositHistory()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L573) | :closed_lock_with_key:  | GET | `api/ua/v2/asset/deposit/history` |
+| [getWithdrawalHistory()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L583) | :closed_lock_with_key:  | GET | `api/ua/v2/asset/withdrawal/history` |
+| [setKcsFeeDeduction()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L593) | :closed_lock_with_key:  | GET | `api/ua/v2/account/fee/kcs-deduct` |
+| [getApiKeyInfo()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L604) | :closed_lock_with_key:  | GET | `api/ua/v2/user/api-key` |
+| [getKYCRegions()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L612) |  | GET | `api/ua/v2/user/kyc-region` |
+| [getRateLimit()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L620) | :closed_lock_with_key:  | GET | `api/ua/v2/rate-limit/query` |
+| [getAllRateLimit()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L630) | :closed_lock_with_key:  | GET | `api/ua/v2/rate-limit/query-all` |
+| [getRateLimitCap()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L638) | :closed_lock_with_key:  | GET | `api/ua/v2/rate-limit/query-cap` |
+| [setSubAccountsRateLimit()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L646) | :closed_lock_with_key:  | POST | `api/ua/v2/rate-limit/set` |
+| [addSubAccount()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L656) | :closed_lock_with_key:  | POST | `api/ua/v2/user/sub/create-sub-account` |
+| [addSubAccountApi()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L666) | :closed_lock_with_key:  | POST | `api/ua/v2/user/create-sub-api-key` |
+| [getWithdrawalQuotas()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L676) | :closed_lock_with_key:  | GET | `api/ua/v2/withdrawals/quotas` |
+| [submitWithdraw()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L686) | :closed_lock_with_key:  | POST | `api/ua/v2/withdrawal` |
+| [cancelWithdrawal()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L696) | :closed_lock_with_key:  | DELETE | `api/ua/v2/withdrawal` |
+| [getThirdPartyCustodyQuota()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L706) | :closed_lock_with_key:  | GET | `api/ua/v2/oes/custody-quota` |
+| [placeOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L727) | :closed_lock_with_key:  | POST | `api/ua/v2/unified/order/amend` |
+| [amendOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L758) | :closed_lock_with_key:  | POST | `api/ua/v2/unified/order/amend` |
+| [batchPlaceOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L770) | :closed_lock_with_key:  | POST | `api/ua/v2/unified/order/cancel-all` |
+| [getOrderDetails()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L795) | :closed_lock_with_key:  | POST | `api/ua/v2/unified/order/cancel-all` |
+| [getOpenOrderList()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L814) | :closed_lock_with_key:  | POST | `api/ua/v2/unified/order/cancel-all` |
+| [getOrderHistory()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L833) | :closed_lock_with_key:  | POST | `api/ua/v2/unified/order/cancel-all` |
+| [getTradeHistory()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L851) | :closed_lock_with_key:  | POST | `api/ua/v2/unified/order/cancel-all` |
+| [cancelOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L868) | :closed_lock_with_key:  | POST | `api/ua/v2/unified/order/cancel-all` |
+| [batchCancelOrders()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L885) | :closed_lock_with_key:  | POST | `api/ua/v2/unified/order/cancel-all` |
+| [batchCancelOrdersBySymbol()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L900) | :closed_lock_with_key:  | POST | `api/ua/v2/unified/order/cancel-all` |
+| [setDCP()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L913) | :closed_lock_with_key:  | POST | `api/ua/v1/dcp/set` |
+| [getDCP()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L924) | :closed_lock_with_key:  | GET | `api/ua/v1/dcp/query` |
+| [getPositionList()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L944) | :closed_lock_with_key:  | GET | `api/ua/v2/unified/position/open-list` |
+| [batchModifyMarginMode()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L954) | :closed_lock_with_key:  | POST | `api/ua/v2/unified/position/margin-mode` |
+| [modifyIsolatedFuturesMargin()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L964) | :closed_lock_with_key:  | POST | `api/ua/v2/unified/position/modify-margin` |
+| [getPositionsHistory()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L977) | :closed_lock_with_key:  | GET | `api/ua/v2/position/history` |
+| [getPrivateFundingFeeHistory()](https://github.com/sieblyio/kucoin-api/blob/master/src/UnifiedAPIClient.ts#L987) | :closed_lock_with_key:  | GET | `api/ua/v2/position/funding-history` |

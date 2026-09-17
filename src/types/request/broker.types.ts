@@ -58,6 +58,22 @@ export interface BrokerTransferRequest {
   specialAccountType: BrokerAccountType;
 }
 
+export type BrokerMarkupTradeType = 'SPOT' | 'FUTURES';
+export type BrokerMarkupEffectiveType = 'DEFAULT' | 'UID';
+
+export interface SetBrokerMarkupFeeRequest {
+  tradeType: BrokerMarkupTradeType;
+  effectiveType: BrokerMarkupEffectiveType;
+  makerMarkUp: number;
+  takerMarkUp: number;
+  effectAt?: number;
+  subUids?: string;
+}
+
+export interface GetBrokerMarkupFeeRequest {
+  subUids?: string;
+}
+
 export interface GetBrokerDepositListRequest {
   currency?: string;
   status?:

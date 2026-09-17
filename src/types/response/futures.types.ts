@@ -208,6 +208,10 @@ export interface FuturesSymbolInfo {
   mmrLimit: number;
   mmrLevConstant: number;
   supportCross: boolean;
+  assetClass?: string;
+  subMarketType?: string;
+  /** @deprecated Prefer assetClass and subMarketType (2026.09.21) */
+  marketType?: string;
 }
 
 export interface TickerDetail {

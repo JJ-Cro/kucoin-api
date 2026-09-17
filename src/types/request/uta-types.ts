@@ -44,8 +44,16 @@ export interface GetAnnouncementsRequestUTA {
 }
 
 export interface GetCurrencyRequestUTA {
-  currency?: string;
+  /** Required as of UTA V2 (2026.08.27) */
+  currency: string;
   chain?: string;
+}
+
+export interface GetCurrenciesRequestUTA {
+  /** Lowercase chain identifier, e.g. trx */
+  chain?: string;
+  /** Uppercase currency codes. Docs send repeated currencyList query params. */
+  currencyList?: string[] | string;
 }
 
 export interface GetSymbolRequestUTA {
@@ -76,10 +84,13 @@ export interface GetOrderBookRequestUTA {
 }
 
 export interface GetFiatPriceRequestUTA {
-  /** Fiat base currency, e.g. USD, EUR. Default USD */
-  base?: string;
-  /** Comma-separated crypto symbols, e.g. BTC,ETH. Default returns all */
-  currencies?: string;
+  /** Fiat base currency, e.g. USD, EUR. Required as of UTA V2 (2026.08.27) */
+  base: string;
+  /**
+   * Crypto symbols. UTA V2 expects a string array (2026.08.27).
+   * Comma-separated string still accepted for older callers.
+   */
+  currencies?: string[] | string;
 }
 
 export interface GetRateLimitRequestUTA {
@@ -99,6 +110,11 @@ export interface SetSubAccountsRateLimitRequestUTA {
 export interface GetKlinesRequestUTA {
   tradeType: 'SPOT' | 'FUTURES';
   symbol: string;
+  /**
+   * Replaces `{symbol}-index-price` / `-mark-price` / `-premium-index` suffixes (UTA V2 2026.08.27).
+   * Suffix encoding remains backward compatible.
+   */
+  klineType?: 'TRADE' | 'INDEX' | 'MARK' | 'PREMIUM' | string;
   interval:
     | '1min'
     | '3min'
@@ -119,7 +135,10 @@ export interface GetKlinesRequestUTA {
 }
 
 export interface GetCurrentFundingRateRequestUTA {
-  symbol: string;
+  /** Contract symbol. Optional when productType is set (UTA V2 2026.08.27). */
+  symbol?: string;
+  /** Product type when querying by category instead of a single symbol. */
+  productType?: 'COIN-FUTURES' | string;
 }
 
 export interface GetHistoryFundingRateRequestUTA {
@@ -143,6 +162,9 @@ export interface GetClassicAccountRequestUTA {
 }
 
 export interface GetSubAccountRequestUTA {
+  /** UTA V2 request field (2026.08.27). Up to 50 UIDs, comma-separated */
+  uid?: string;
+  /** @deprecated UTA V2 renamed to uid (2026.08.27) */
   UID?: string; // Up to 50 UIDs, comma-separated
   pageSize?: number; // Default 10, max 50
   lastId?: number;
@@ -164,7 +186,10 @@ export interface FlexTransferRequestUTA {
   clientOid: string;
   currency: string;
   amount: string;
-  type: '0' | '1' | '2' | '3'; // 0=INTERNAL, 1=PARENT_TO_SUB, 2=SUB_TO_PARENT, 3=SUB_TO_SUB
+  /** UTA V2 transfer type (2026.08.27). Replaces numeric `type`. */
+  transferType?: 'INTERNAL' | 'PARENT_TO_SUB' | 'SUB_TO_PARENT' | 'SUB_TO_SUB';
+  /** @deprecated UTA V2 uses transferType: 0=INTERNAL, 1=PARENT_TO_SUB, 2=SUB_TO_PARENT, 3=SUB_TO_SUB */
+  type?: '0' | '1' | '2' | '3'; // 0=INTERNAL, 1=PARENT_TO_SUB, 2=SUB_TO_PARENT, 3=SUB_TO_SUB
   fromAccountType:
     | 'FUNDING'
     | 'SPOT'
@@ -179,7 +204,13 @@ export interface FlexTransferRequestUTA {
     | 'CROSS'
     | 'ISOLATED'
     | 'UNIFIED';
+  /** UTA V2 required isolated-account tag (2026.08.27). Replaces fromAccountSymbol. */
+  fromAccountTag?: string;
+  /** UTA V2 required isolated-account tag (2026.08.27). Replaces toAccountSymbol. */
+  toAccountTag?: string;
+  /** @deprecated UTA V2 uses fromAccountTag */
   fromAccountSymbol?: string; // Required when fromAccountType is ISOLATED
+  /** @deprecated UTA V2 uses toAccountTag */
   toAccountSymbol?: string; // Required when toAccountType is ISOLATED
   fromUid?: string; // Required for SUB transfers
   toUid?: string; // Required for SUB transfers
@@ -274,7 +305,13 @@ export interface GetDepositAddressRequestUTA {
 
 export interface GetWithdrawalQuotasRequestUTA {
   currency: string;
+  /** UTA V2 chain identifier (2026.08.27). Replaces chainId. */
+  chain?: string;
+  /** @deprecated UTA V2 renamed to chain */
   chainId?: string;
+  /** Required as of UTA V2 (2026.08.27) */
+  withdrawType?: 'ADDRESS' | 'UID' | 'MAIL' | 'PHONE';
+  isInner?: boolean;
 }
 
 export interface SubmitWithdrawRequestUTA {
@@ -282,6 +319,9 @@ export interface SubmitWithdrawRequestUTA {
   toAddress: string;
   amount: string;
   withdrawType: 'ADDRESS' | 'UID' | 'MAIL' | 'PHONE';
+  /** UTA V2 chain identifier (2026.08.27). Replaces chainId. */
+  chain?: string;
+  /** @deprecated UTA V2 renamed to chain */
   chainId?: string;
   memo?: string;
   isInner?: boolean;
@@ -337,6 +377,8 @@ export interface PlaceOrderRequestUTA {
   autoBorrow?: boolean; // Only for Isolated/Cross Margin (Classic only)
   autoRepay?: boolean; // Only for Isolated/Cross Margin (Classic only)
   tags?: string; // Max length 20
+  /** Broker tag, max 50 chars. Decoupled from capped tags (2026.09.21) */
+  brokerTag?: string;
   triggerDirection?: 'DOWN' | 'UP'; // Required when triggerPrice is set
   triggerPrice?: string;
   triggerPriceType?: 'TP' | 'IP' | 'MP'; // Only for Futures
@@ -391,6 +433,22 @@ export interface GetTradeHistoryRequestUTA {
   endAt?: number; // milliseconds
   lastId?: string;
   pageSize?: number; // Default 50, max 200
+  /** Query all trade kinds (UTA V2 2026.08.27), e.g. NORMAL / ADL / LIQUID / SETTLEMENT */
+  fillType?: string;
+}
+
+export interface AmendOrderRequestUTA {
+  symbol: string;
+  orderId?: string;
+  clientOid?: string;
+  newPrice?: number | string;
+  newSize?: number | string;
+  tpTriggerPrice?: string;
+  slTriggerPrice?: string;
+}
+
+export interface GetIndexPriceRequestUTA {
+  symbol: string;
 }
 
 export interface CancelOrderRequestUTA {
