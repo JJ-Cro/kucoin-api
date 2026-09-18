@@ -10,6 +10,7 @@ import {
 import type {
   AddSubAccountApiRequestUTA,
   AddSubAccountRequestUTA,
+  AmendOrderRequestUTA,
   BatchCancelOrdersBySymbolRequestUTA,
   BatchCancelOrdersRequestUTA,
   BatchModifyMarginModeRequestUTA,
@@ -22,6 +23,7 @@ import type {
   GetBorrowingRatesAndLimitsRequestUTA,
   GetCallAuctionInfoRequestUTA,
   GetClassicAccountRequestUTA,
+  GetCurrenciesRequestUTA,
   GetCurrencyRequestUTA,
   GetCurrentFundingRateRequestUTA,
   GetDCPRequestUTA,
@@ -30,6 +32,7 @@ import type {
   GetFeeRateRequestUTA,
   GetFiatPriceRequestUTA,
   GetHistoryFundingRateRequestUTA,
+  GetIndexPriceRequestUTA,
   GetInterestHistoryRequestUTA,
   GetInterestRateIndexRequestUTA,
   GetKlinesRequestUTA,
@@ -69,6 +72,7 @@ import type { APISuccessResponse } from './types/response/shared.types.js';
 import type {
   AddSubAccountApiResponseUTA,
   AddSubAccountResponseUTA,
+  AmendOrderResponseUTA,
   ApiKeyInfoUTA,
   BatchCancelOrdersBySymbolResponseUTA,
   BatchCancelOrdersResponseUTA,
@@ -88,12 +92,14 @@ import type {
   GetCallAuctionInfoResponseUTA,
   GetClassicAccountResponseUTA,
   GetCrossMarginConfigResponseUTA,
+  GetCurrenciesResponseUTA,
   GetCurrencyResponseUTA,
   GetCurrentFundingRateResponseUTA,
   GetDepositHistoryResponseUTA,
   GetFeeRateResponseUTA,
   GetFiatPriceResponseUTA,
   GetHistoryFundingRateResponseUTA,
+  GetIndexPriceResponseUTA,
   GetInterestHistoryResponseUTA,
   GetInterestRateIndexResponseUTA,
   GetKlinesResponseUTA,
@@ -156,7 +162,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getAnnouncements(
     params?: GetAnnouncementsRequestUTA,
   ): Promise<APISuccessResponse<GetAnnouncementsResponseUTA>> {
-    return this.get('api/ua/v1/market/announcement', params);
+    return this.get('api/ua/v2/market/announcement', params);
   }
 
   /**
@@ -164,9 +170,19 @@ export class UnifiedAPIClient extends BaseRestClient {
    * Request the currency details of a specified currency via this endpoint.
    */
   getCurrency(
-    params?: GetCurrencyRequestUTA,
+    params: GetCurrencyRequestUTA,
   ): Promise<APISuccessResponse<GetCurrencyResponseUTA>> {
-    return this.get('api/ua/v1/market/currency', params);
+    return this.get('api/ua/v2/market/currency', params);
+  }
+
+  /**
+   * Get Currencies
+   * Currency and chain-level deposit/withdrawal configuration.
+   */
+  getCurrencies(
+    params?: GetCurrenciesRequestUTA,
+  ): Promise<APISuccessResponse<GetCurrenciesResponseUTA>> {
+    return this.get('api/ua/v2/asset/currencies', params);
   }
 
   /**
@@ -176,7 +192,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getThirdPartyCustodyCurrencies(
     params?: GetThirdPartyCustodyCurrenciesRequestUTA,
   ): Promise<APISuccessResponse<ThirdPartyCustodyCurrencyUTA[]>> {
-    return this.get('api/ua/v1/oes/currency', params);
+    return this.get('api/ua/v2/oes/currency', params);
   }
 
   /**
@@ -186,7 +202,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getSymbols(
     params: GetSymbolRequestUTA,
   ): Promise<APISuccessResponse<GetSymbolResponseUTA>> {
-    return this.get('api/ua/v1/market/instrument', params);
+    return this.get('api/ua/v2/market/instrument', params);
   }
 
   /**
@@ -196,7 +212,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getTickers(
     params: GetTickerRequestUTA,
   ): Promise<APISuccessResponse<GetTickerResponseUTA>> {
-    return this.get('api/ua/v1/market/ticker', params);
+    return this.get('api/ua/v2/market/ticker', params);
   }
 
   /**
@@ -206,7 +222,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getTrades(
     params: GetTradesRequestUTA,
   ): Promise<APISuccessResponse<GetTradesResponseUTA>> {
-    return this.get('api/ua/v1/market/trade', params);
+    return this.get('api/ua/v2/market/trade', params);
   }
 
   /**
@@ -216,7 +232,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getOrderBook(
     params: GetOrderBookRequestUTA,
   ): Promise<APISuccessResponse<GetOrderBookResponseUTA>> {
-    return this.get('api/ua/v1/market/orderbook', params);
+    return this.get('api/ua/v2/market/orderbook', params);
   }
 
   /**
@@ -226,7 +242,17 @@ export class UnifiedAPIClient extends BaseRestClient {
   getKlines(
     params: GetKlinesRequestUTA,
   ): Promise<APISuccessResponse<GetKlinesResponseUTA>> {
-    return this.get('api/ua/v1/market/kline', params);
+    return this.get('api/ua/v2/market/kline', params);
+  }
+
+  /**
+   * Get Index Price
+   * Index price snapshots (updated once per second).
+   */
+  getIndexPrice(
+    params: GetIndexPriceRequestUTA,
+  ): Promise<APISuccessResponse<GetIndexPriceResponseUTA>> {
+    return this.get('api/ua/v2/market/index-price', params);
   }
 
   /**
@@ -234,9 +260,13 @@ export class UnifiedAPIClient extends BaseRestClient {
    * Get current Futures funding fee rate.
    */
   getCurrentFundingRate(
-    params: GetCurrentFundingRateRequestUTA,
-  ): Promise<APISuccessResponse<GetCurrentFundingRateResponseUTA>> {
-    return this.get('api/ua/v1/market/funding-rate', params);
+    params?: GetCurrentFundingRateRequestUTA,
+  ): Promise<
+    APISuccessResponse<
+      GetCurrentFundingRateResponseUTA | GetCurrentFundingRateResponseUTA[]
+    >
+  > {
+    return this.get('api/ua/v2/market/funding-rate', params);
   }
 
   /**
@@ -246,7 +276,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getHistoryFundingRate(
     params: GetHistoryFundingRateRequestUTA,
   ): Promise<APISuccessResponse<GetHistoryFundingRateResponseUTA>> {
-    return this.get('api/ua/v1/market/funding-rate-history', params);
+    return this.get('api/ua/v2/market/funding-rate-history', params);
   }
 
   /**
@@ -266,7 +296,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getBorrowableCurrencies(): Promise<
     APISuccessResponse<BorrowableCurrencyUTA[]>
   > {
-    return this.get('api/ua/v1/market/borrowable-currency');
+    return this.get('api/ua/v2/market/borrowable-currency');
   }
 
   /**
@@ -276,7 +306,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getServiceStatus(
     params: GetServiceStatusRequestUTA,
   ): Promise<APISuccessResponse<GetServiceStatusResponseUTA>> {
-    return this.get('api/ua/v1/server/status', params);
+    return this.get('api/ua/v2/server/status', params);
   }
 
   /**
@@ -284,7 +314,7 @@ export class UnifiedAPIClient extends BaseRestClient {
    * Get the client side IP address. Added 2026.07.01.
    */
   getClientIPAddress(): Promise<APISuccessResponse<string>> {
-    return this.get('api/ua/v1/user/my-ip');
+    return this.get('api/ua/v2/user/my-ip');
   }
 
   /**
@@ -292,9 +322,9 @@ export class UnifiedAPIClient extends BaseRestClient {
    * Request the fiat price of currencies for available trading pairs. Added 2026.07.01.
    */
   getFiatPrice(
-    params?: GetFiatPriceRequestUTA,
+    params: GetFiatPriceRequestUTA,
   ): Promise<APISuccessResponse<GetFiatPriceResponseUTA>> {
-    return this.get('api/ua/v1/market/fiat-price', params);
+    return this.get('api/ua/v2/market/fiat-price', params);
   }
 
   /**
@@ -304,7 +334,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getInterestRateIndex(
     params: GetInterestRateIndexRequestUTA,
   ): Promise<APISuccessResponse<GetInterestRateIndexResponseUTA>> {
-    return this.get('api/ua/v1/market/interest-rate-index', params);
+    return this.get('api/ua/v2/market/interest-rate-index', params);
   }
 
   /**
@@ -314,7 +344,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getTradeStatistics(): Promise<
     APISuccessResponse<GetTradeStatisticsResponseUTA>
   > {
-    return this.get('api/ua/v1/trade-statistics');
+    return this.get('api/ua/v2/trade-statistics');
   }
 
   /**
@@ -324,7 +354,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getCallAuctionInfo(
     params: GetCallAuctionInfoRequestUTA,
   ): Promise<APISuccessResponse<GetCallAuctionInfoResponseUTA>> {
-    return this.get('api/ua/v1/market/call-auction-info', params);
+    return this.get('api/ua/v2/market/call-auction-info', params);
   }
 
   /**
@@ -341,7 +371,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getClassicAccount(
     params: GetClassicAccountRequestUTA,
   ): Promise<APISuccessResponse<GetClassicAccountResponseUTA>> {
-    return this.getPrivate('api/ua/v1/account/balance', params);
+    return this.getPrivate('api/ua/v2/account/balance', params);
   }
 
   /**
@@ -349,7 +379,7 @@ export class UnifiedAPIClient extends BaseRestClient {
    * Get information for Unified Trading Account.
    */
   getAccount(): Promise<APISuccessResponse<GetClassicAccountResponseUTA>> {
-    return this.getPrivate('api/ua/v1/unified/account/balance');
+    return this.getPrivate('api/ua/v2/unified/account/balance');
   }
 
   /**
@@ -359,7 +389,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getAccountOverview(): Promise<
     APISuccessResponse<GetAccountOverviewResponseUTA>
   > {
-    return this.getPrivate('api/ua/v1/unified/account/overview');
+    return this.getPrivate('api/ua/v2/unified/account/overview');
   }
 
   /**
@@ -369,7 +399,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getSubAccount(
     params?: GetSubAccountRequestUTA,
   ): Promise<APISuccessResponse<GetSubAccountResponseUTA>> {
-    return this.getPrivate('api/ua/v1/sub-account/balance', params);
+    return this.getPrivate('api/ua/v2/sub-account/balance', params);
   }
 
   /**
@@ -379,7 +409,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getSubAccountList(
     params?: GetSubAccountListRequestUTA,
   ): Promise<APISuccessResponse<GetSubAccountListResponseUTA>> {
-    return this.getPrivate('api/ua/v1/user/sub-account-list', params);
+    return this.getPrivate('api/ua/v2/user/sub-account-list', params);
   }
 
   /**
@@ -391,7 +421,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getTransferQuotas(
     params: GetTransferQuotasRequestUTA,
   ): Promise<APISuccessResponse<GetTransferQuotasResponseUTA>> {
-    return this.getPrivate('api/ua/v1/account/transfer-quota', params);
+    return this.getPrivate('api/ua/v2/account/transfer-quota', params);
   }
 
   /**
@@ -402,7 +432,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   flexTransfer(
     params: FlexTransferRequestUTA,
   ): Promise<APISuccessResponse<FlexTransferResponseUTA>> {
-    return this.postPrivate('api/ua/v1/account/transfer', params);
+    return this.postPrivate('api/ua/v2/account/transfer', params);
   }
 
   /**
@@ -412,7 +442,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   setSubAccountTransferPermission(
     params: SetSubAccountTransferPermissionRequestUTA,
   ): Promise<APISuccessResponse<SubAccountTransferPermissionUTA[]>> {
-    return this.postPrivate('api/ua/v1/sub-account/canTransferOut', params);
+    return this.postPrivate('api/ua/v2/sub-account/canTransferOut', params);
   }
 
   /**
@@ -420,7 +450,7 @@ export class UnifiedAPIClient extends BaseRestClient {
    * This interface supports query the list of unified and classic sub-accounts and current account mode.
    */
   getAccountMode(): Promise<APISuccessResponse<GetAccountModeResponseUTA>> {
-    return this.getPrivate('api/ua/v1/account/mode');
+    return this.getPrivate('api/ua/v2/account/mode');
   }
 
   /**
@@ -430,7 +460,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   setAccountMode(
     params: SetAccountModeRequestUTA,
   ): Promise<APISuccessResponse<null>> {
-    return this.postPrivate('api/ua/v1/account/mode', params);
+    return this.postPrivate('api/ua/v2/account/mode', params);
   }
 
   /**
@@ -442,7 +472,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getFeeRate(
     params: GetFeeRateRequestUTA,
   ): Promise<APISuccessResponse<GetFeeRateResponseUTA>> {
-    return this.getPrivate('api/ua/v1/user/fee-rate', params);
+    return this.getPrivate('api/ua/v2/user/fee-rate', params);
   }
 
   /**
@@ -462,7 +492,7 @@ export class UnifiedAPIClient extends BaseRestClient {
       GetAccountLedgerResponseUTA | GetAccountLedgerResponseClassicUTA
     >
   > {
-    return this.getPrivate('api/ua/v1/account/ledger', params);
+    return this.getPrivate('api/ua/v2/account/ledger', params);
   }
 
   /**
@@ -472,7 +502,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getInterestHistory(
     params: GetInterestHistoryRequestUTA,
   ): Promise<APISuccessResponse<GetInterestHistoryResponseUTA>> {
-    return this.getPrivate('api/ua/v1/account/interest-history', params);
+    return this.getPrivate('api/ua/v2/account/interest-history', params);
   }
 
   /**
@@ -482,7 +512,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getBorrowingRatesAndLimits(
     params: GetBorrowingRatesAndLimitsRequestUTA,
   ): Promise<APISuccessResponse<GetBorrowingRatesAndLimitsResponseUTA>> {
-    return this.getPrivate('api/ua/v1/account/interest-limits', params);
+    return this.getPrivate('api/ua/v2/account/interest-limits', params);
   }
 
   /**
@@ -493,7 +523,7 @@ export class UnifiedAPIClient extends BaseRestClient {
     params: ModifyLeverageRequestUTA,
   ): Promise<APISuccessResponse<null>> {
     return this.postPrivate(
-      'api/ua/v1/unified/account/modify-leverage',
+      'api/ua/v2/unified/account/modify-leverage',
       params,
     );
   }
@@ -504,10 +534,12 @@ export class UnifiedAPIClient extends BaseRestClient {
    */
   modifyMarginCrossLeverage(
     params: ModifyMarginCrossLeverageRequestUTA,
-    accountMode: 'unified' = 'unified',
+    accountMode: 'classic' | 'unified' = 'unified',
   ): Promise<APISuccessResponse<ModifyMarginCrossLeverageResponseUTA>> {
     return this.postPrivate(
-      `api/ua/v1/${accountMode}/account/modify-leverage-margin-cross`,
+      accountMode === 'classic'
+        ? 'api/ua/v1/classic/account/modify-leverage-margin-cross'
+        : 'api/ua/v2/unified/account/modify-leverage-margin-cross',
       params,
     );
   }
@@ -519,19 +551,19 @@ export class UnifiedAPIClient extends BaseRestClient {
   getLeverage(
     params: GetLeverageRequestUTA,
   ): Promise<APISuccessResponse<GetLeverageItemUTA[]>> {
-    return this.getPrivate('api/ua/v1/unified/account/leverage', params);
+    return this.getPrivate('api/ua/v2/unified/account/leverage', params);
   }
 
   /**
    * Get Deposit Address
    * Return a deposit address; when both currency and chain are provided,
    * the address will be created if it does not exist.
-   * URL unified to GET /api/ua/v1/asset/deposit/address as of 2026.01.17.
+   * URL unified to GET /api/ua/v2/asset/deposit/address as of 2026.01.17.
    */
   getDepositAddress(
     params: GetDepositAddressRequestUTA,
   ): Promise<APISuccessResponse<DepositAddressUTA[]>> {
-    return this.getPrivate('api/ua/v1/asset/deposit/address', params);
+    return this.getPrivate('api/ua/v2/asset/deposit/address', params);
   }
 
   /**
@@ -541,7 +573,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getDepositHistory(
     params?: GetDepositHistoryRequestUTA,
   ): Promise<APISuccessResponse<GetDepositHistoryResponseUTA>> {
-    return this.getPrivate('api/ua/v1/asset/deposit/history', params);
+    return this.getPrivate('api/ua/v2/asset/deposit/history', params);
   }
 
   /**
@@ -551,7 +583,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getWithdrawalHistory(
     params?: GetWithdrawalHistoryRequestUTA,
   ): Promise<APISuccessResponse<GetWithdrawalHistoryResponseUTA>> {
-    return this.getPrivate('api/ua/v1/asset/withdrawal/history', params);
+    return this.getPrivate('api/ua/v2/asset/withdrawal/history', params);
   }
 
   /**
@@ -561,7 +593,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   setKcsFeeDeduction(
     params: SetKcsFeeDeductionRequestUTA,
   ): Promise<APISuccessResponse<SetKcsFeeDeductionResponseUTA>> {
-    return this.getPrivate('api/ua/v1/account/fee/kcs-deduct', params);
+    return this.getPrivate('api/ua/v2/account/fee/kcs-deduct', params);
   }
 
   /**
@@ -570,7 +602,7 @@ export class UnifiedAPIClient extends BaseRestClient {
    * Works for both master and sub user API keys. Added 2026.05.15.
    */
   getApiKeyInfo(): Promise<APISuccessResponse<ApiKeyInfoUTA>> {
-    return this.getPrivate('api/ua/v1/user/api-key');
+    return this.getPrivate('api/ua/v2/user/api-key');
   }
 
   /**
@@ -578,7 +610,7 @@ export class UnifiedAPIClient extends BaseRestClient {
    * Obtain the list of KYC regions. Added 2026.05.15.
    */
   getKYCRegions(): Promise<APISuccessResponse<KYCRegionUTA[]>> {
-    return this.get('api/ua/v1/user/kyc-region');
+    return this.get('api/ua/v2/user/kyc-region');
   }
 
   /**
@@ -588,7 +620,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getRateLimit(
     params: GetRateLimitRequestUTA,
   ): Promise<APISuccessResponse<GetRateLimitResponseUTA>> {
-    return this.getPrivate('api/ua/v1/rate-limit/query', params);
+    return this.getPrivate('api/ua/v2/rate-limit/query', params);
   }
 
   /**
@@ -596,7 +628,7 @@ export class UnifiedAPIClient extends BaseRestClient {
    * Query UTA API rate limit for all accounts under the master. Added 2026.06.05.
    */
   getAllRateLimit(): Promise<APISuccessResponse<GetRateLimitResponseUTA>> {
-    return this.getPrivate('api/ua/v1/rate-limit/query-all');
+    return this.getPrivate('api/ua/v2/rate-limit/query-all');
   }
 
   /**
@@ -604,7 +636,7 @@ export class UnifiedAPIClient extends BaseRestClient {
    * Query the master account UTA API rate limit cap and allocation. Added 2026.06.05.
    */
   getRateLimitCap(): Promise<APISuccessResponse<GetRateLimitCapResponseUTA>> {
-    return this.getPrivate('api/ua/v1/rate-limit/query-cap');
+    return this.getPrivate('api/ua/v2/rate-limit/query-cap');
   }
 
   /**
@@ -614,7 +646,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   setSubAccountsRateLimit(
     params: SetSubAccountsRateLimitRequestUTA,
   ): Promise<APISuccessResponse<SetSubAccountsRateLimitResponseUTA>> {
-    return this.postPrivate('api/ua/v1/rate-limit/set', params);
+    return this.postPrivate('api/ua/v2/rate-limit/set', params);
   }
 
   /**
@@ -624,7 +656,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   addSubAccount(
     params: AddSubAccountRequestUTA,
   ): Promise<APISuccessResponse<AddSubAccountResponseUTA>> {
-    return this.postPrivate('api/ua/v1/user/sub/create-sub-account', params);
+    return this.postPrivate('api/ua/v2/user/sub/create-sub-account', params);
   }
 
   /**
@@ -634,7 +666,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   addSubAccountApi(
     params: AddSubAccountApiRequestUTA,
   ): Promise<APISuccessResponse<AddSubAccountApiResponseUTA>> {
-    return this.postPrivate('api/ua/v1/user/create-sub-api-key', params);
+    return this.postPrivate('api/ua/v2/user/create-sub-api-key', params);
   }
 
   /**
@@ -644,7 +676,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getWithdrawalQuotas(
     params: GetWithdrawalQuotasRequestUTA,
   ): Promise<APISuccessResponse<WithdrawalQuotasUTA>> {
-    return this.getPrivate('api/ua/v1/withdrawals/quotas', params);
+    return this.getPrivate('api/ua/v2/withdrawals/quotas', params);
   }
 
   /**
@@ -654,7 +686,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   submitWithdraw(
     params: SubmitWithdrawRequestUTA,
   ): Promise<APISuccessResponse<SubmitWithdrawResponseUTA>> {
-    return this.postPrivate('api/ua/v1/withdrawal', params);
+    return this.postPrivate('api/ua/v2/withdrawal', params);
   }
 
   /**
@@ -664,7 +696,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   cancelWithdrawal(params?: {
     withdrawalId?: string;
   }): Promise<APISuccessResponse<string | null>> {
-    return this.deletePrivate('api/ua/v1/withdrawal', params);
+    return this.deletePrivate('api/ua/v2/withdrawal', params);
   }
 
   /**
@@ -674,7 +706,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getThirdPartyCustodyQuota(
     params?: GetThirdPartyCustodyQuotaRequestUTA,
   ): Promise<APISuccessResponse<ThirdPartyCustodyQuotaUTA[]>> {
-    return this.getPrivate('api/ua/v1/oes/custody-quota', params);
+    return this.getPrivate('api/ua/v2/oes/custody-quota', params);
   }
 
   /**
@@ -699,8 +731,8 @@ export class UnifiedAPIClient extends BaseRestClient {
     const { tradeType, ...bodyParams } = params;
     const url =
       accountMode === 'classic'
-        ? `api/ua/v1/${accountMode}/order/place?tradeType=${tradeType}`
-        : `api/ua/v1/${accountMode}/order/place`;
+        ? `api/ua/v1/classic/order/place?tradeType=${tradeType}`
+        : 'api/ua/v2/unified/order/place';
 
     const internalReqContext: InternalRequestContext = {
       derivedClientType: isUTAMainClientType(params)
@@ -720,9 +752,19 @@ export class UnifiedAPIClient extends BaseRestClient {
   }
 
   /**
+   * Amend Order
+   * Modify price, size, or TP/SL trigger prices. Futures only. Provide orderId or clientOid.
+   */
+  amendOrder(
+    params: AmendOrderRequestUTA,
+  ): Promise<APISuccessResponse<AmendOrderResponseUTA>> {
+    return this.postPrivate('api/ua/v2/unified/order/amend', params);
+  }
+
+  /**
    * Batch Place Order (Classic)
    * This interface can be used for placing batch orders.
-   * URL changed to /api/ua/v1/{accountMode}/order/place-batch as of 2026.01.17.
+   * URL changed to /api/ua/v2/{accountMode}/order/place-batch as of 2026.01.17.
    * Note: timeInForce supports 'RPI' value for Futures as of 2025.01.02.
    */
   batchPlaceOrder(
@@ -731,8 +773,8 @@ export class UnifiedAPIClient extends BaseRestClient {
   ): Promise<APISuccessResponse<BatchPlaceOrderResponseUTA>> {
     const url =
       accountMode === 'classic'
-        ? `api/ua/v1/${accountMode}/order/place-batch?tradeType=${params.tradeType}`
-        : `api/ua/v1/${accountMode}/order/place-batch`;
+        ? `api/ua/v1/classic/order/place-batch?tradeType=${params.tradeType}`
+        : 'api/ua/v2/unified/order/place-batch';
 
     const internalReqContext: InternalRequestContext = {
       derivedClientType: isUTAMainClientType(params)
@@ -754,7 +796,12 @@ export class UnifiedAPIClient extends BaseRestClient {
     params: GetOrderDetailsRequestUTA,
     accountMode: 'classic' | 'unified' = 'unified',
   ): Promise<APISuccessResponse<OrderDetailsUTA>> {
-    return this.getPrivate(`api/ua/v1/${accountMode}/order/detail`, params);
+    return this.getPrivate(
+      accountMode === 'classic'
+        ? 'api/ua/v1/classic/order/detail'
+        : 'api/ua/v2/unified/order/detail',
+      params,
+    );
   }
 
   /**
@@ -768,7 +815,12 @@ export class UnifiedAPIClient extends BaseRestClient {
     params: GetOpenOrderListRequestUTA,
     accountMode: 'classic' | 'unified' = 'unified',
   ): Promise<APISuccessResponse<GetOpenOrderListResponseUTA>> {
-    return this.getPrivate(`api/ua/v1/${accountMode}/order/open-list`, params);
+    return this.getPrivate(
+      accountMode === 'classic'
+        ? 'api/ua/v1/classic/order/open-list'
+        : 'api/ua/v2/unified/order/open-list',
+      params,
+    );
   }
 
   /**
@@ -782,7 +834,12 @@ export class UnifiedAPIClient extends BaseRestClient {
     params: GetOrderHistoryRequestUTA,
     accountMode: 'classic' | 'unified' = 'unified',
   ): Promise<APISuccessResponse<GetOrderHistoryResponseUTA>> {
-    return this.getPrivate(`api/ua/v1/${accountMode}/order/history`, params);
+    return this.getPrivate(
+      accountMode === 'classic'
+        ? 'api/ua/v1/classic/order/history'
+        : 'api/ua/v2/unified/order/history',
+      params,
+    );
   }
 
   /**
@@ -795,7 +852,12 @@ export class UnifiedAPIClient extends BaseRestClient {
     params: GetTradeHistoryRequestUTA,
     accountMode: 'classic' | 'unified' = 'unified',
   ): Promise<APISuccessResponse<GetTradeHistoryResponseUTA>> {
-    return this.getPrivate(`api/ua/v1/${accountMode}/order/execution`, params);
+    return this.getPrivate(
+      accountMode === 'classic'
+        ? 'api/ua/v1/classic/order/execution'
+        : 'api/ua/v2/unified/order/execution',
+      params,
+    );
   }
 
   /**
@@ -809,8 +871,8 @@ export class UnifiedAPIClient extends BaseRestClient {
   ): Promise<APISuccessResponse<CancelOrderResponseUTA>> {
     const url =
       accountMode === 'classic'
-        ? `api/ua/v1/${accountMode}/order/cancel?tradeType=${params.tradeType}`
-        : `api/ua/v1/${accountMode}/order/cancel`;
+        ? `api/ua/v1/classic/order/cancel?tradeType=${params.tradeType}`
+        : 'api/ua/v2/unified/order/cancel';
     return this.postPrivate(url, params);
   }
 
@@ -826,8 +888,8 @@ export class UnifiedAPIClient extends BaseRestClient {
   ): Promise<APISuccessResponse<BatchCancelOrdersResponseUTA>> {
     const url =
       accountMode === 'classic'
-        ? `api/ua/v1/${accountMode}/order/cancel-batch?tradeType=${params.tradeType}`
-        : `api/ua/v1/${accountMode}/order/cancel-batch`;
+        ? `api/ua/v1/classic/order/cancel-batch?tradeType=${params.tradeType}`
+        : 'api/ua/v2/unified/order/cancel-batch';
     return this.postPrivate(url, params);
   }
 
@@ -838,7 +900,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   batchCancelOrdersBySymbol(
     params: BatchCancelOrdersBySymbolRequestUTA,
   ): Promise<APISuccessResponse<BatchCancelOrdersBySymbolResponseUTA>> {
-    return this.postPrivate('api/ua/v1/unified/order/cancel-all', params);
+    return this.postPrivate('api/ua/v2/unified/order/cancel-all', params);
   }
 
   /**
@@ -882,7 +944,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getPositionList(
     params?: GetPositionListRequestUTA,
   ): Promise<APISuccessResponse<PositionUTA[]>> {
-    return this.getPrivate('api/ua/v1/unified/position/open-list', params);
+    return this.getPrivate('api/ua/v2/unified/position/open-list', params);
   }
 
   /**
@@ -892,7 +954,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   batchModifyMarginMode(
     params: BatchModifyMarginModeRequestUTA,
   ): Promise<APISuccessResponse<BatchModifyMarginModeResponseUTA>> {
-    return this.postPrivate('api/ua/v1/unified/position/margin-mode', params);
+    return this.postPrivate('api/ua/v2/unified/position/margin-mode', params);
   }
 
   /**
@@ -902,7 +964,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   modifyIsolatedFuturesMargin(
     params: ModifyIsolatedFuturesMarginRequestUTA,
   ): Promise<APISuccessResponse<ModifyIsolatedFuturesMarginResponseUTA>> {
-    return this.postPrivate('api/ua/v1/unified/position/modify-margin', params);
+    return this.postPrivate('api/ua/v2/unified/position/modify-margin', params);
   }
 
   /**
@@ -915,7 +977,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getPositionsHistory(
     params?: GetPositionsHistoryRequestUTA,
   ): Promise<APISuccessResponse<GetPositionsHistoryResponseUTA>> {
-    return this.getPrivate('api/ua/v1/position/history', params);
+    return this.getPrivate('api/ua/v2/position/history', params);
   }
 
   /**
@@ -925,7 +987,7 @@ export class UnifiedAPIClient extends BaseRestClient {
   getPrivateFundingFeeHistory(
     params?: GetPrivateFundingFeeHistoryRequestUTA,
   ): Promise<APISuccessResponse<GetPrivateFundingFeeHistoryResponseUTA>> {
-    return this.getPrivate('api/ua/v1/position/funding-history', params);
+    return this.getPrivate('api/ua/v2/position/funding-history', params);
   }
 
   /**
@@ -937,6 +999,11 @@ export class UnifiedAPIClient extends BaseRestClient {
     params: GetAccountPositionTiersRequestUTA,
     accountMode: 'classic' | 'unified' = 'classic',
   ): Promise<APISuccessResponse<PositionTierUTA[]>> {
-    return this.getPrivate(`api/ua/v1/${accountMode}/position/tiers`, params);
+    return this.getPrivate(
+      accountMode === 'classic'
+        ? 'api/ua/v1/classic/position/tiers'
+        : 'api/ua/v2/unified/position/tiers',
+      params,
+    );
   }
 }

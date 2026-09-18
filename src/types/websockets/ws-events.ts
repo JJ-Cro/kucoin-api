@@ -91,9 +91,77 @@ export interface WsUTAFundingFeePublicPush {
     s: string;
     fR?: string;
     fT?: number;
+    /** Current funding rate (UTA V2 `funding-fee` channel) */
+    fr?: string;
+    /** Funding time (UTA V2) */
+    ft?: number;
+    /** Last settled funding fee rate (UTA V2 2026.08.27) */
+    lfr?: string;
+    nt?: number;
+    gl?: number;
+    fc?: string;
+    ff?: string;
     M?: number;
     [key: string]: string | number | boolean | undefined;
   };
+}
+
+/**
+ * UTA WebSocket public All Funding Fee Rates channel (`channel: funding-fee-all-symbols`).
+ * Added 2026.08.27.
+ * @see https://www.kucoin.com/docs-new/3470412w0
+ */
+export interface WsUTAAllFundingFeeRatesPublicPush {
+  T: string;
+  P: number;
+  d: WsUTAFundingFeePublicPush['d'][];
+}
+
+/**
+ * UTA WebSocket private execution push (`channel: execution`).
+ * Field `fP` added 2026.09.21. Empty before 2026.09.05 (UTC-8).
+ * When fT is ADL/LIQUID/SETTLEMENT, q is a positive value (2026.08.20).
+ * @see https://www.kucoin.com/docs-new/3470407w0
+ */
+export interface WsUTAExecutionPushData {
+  oi?: string;
+  s?: string;
+  S?: string;
+  oT?: string;
+  p?: string;
+  q?: string;
+  ti?: string;
+  E?: number;
+  lR?: string;
+  f?: string;
+  fC?: string;
+  fT?: string;
+  ci?: string;
+  /** Fill PnL. Empty string when data is before 2026.09.05 (UTC-8) */
+  fP?: string;
+  [key: string]: string | number | boolean | undefined;
+}
+
+export interface WsUTAExecutionPush {
+  T: string;
+  P: number;
+  d: WsUTAExecutionPushData;
+}
+
+/**
+ * UTA WebSocket private order push (`channel: order` / `orderAll`).
+ * Field `brokerTag` added 2026.09.21.
+ * @see https://www.kucoin.com/docs-new/3470228w0
+ */
+export interface WsUTAOrderPushData {
+  brokerTag?: string;
+  [key: string]: string | number | boolean | undefined;
+}
+
+export interface WsUTAOrderPush {
+  T: string;
+  P: number;
+  d: WsUTAOrderPushData;
 }
 
 /**

@@ -156,6 +156,19 @@ async function start() {
             symbol: 'XBTUSDTM',
           },
         },
+        // UTA V2 public Funding Fee Rate (`symbols` for multiple contracts, 2026.08.27)
+        // https://www.kucoin.com/docs-new/3470357w0
+        {
+          topic: 'funding-fee',
+          payload: {
+            symbols: ['XBTUSDTM', 'XRPUSDTM'],
+          },
+        },
+        // UTA V2 public All Funding Fee Rates
+        // https://www.kucoin.com/docs-new/3470412w0
+        {
+          topic: 'funding-fee-all-symbols',
+        },
         // UTA public Mark Price channel
         {
           topic: 'markPrice',

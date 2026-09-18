@@ -71,6 +71,10 @@ export interface SymbolInfo {
   callauctionSecondStageStartTime: number | null;
   callauctionThirdStageStartTime: number | null;
   tradingStartTime: number | null;
+  assetClass?: string;
+  subMarketType?: string;
+  /** @deprecated Prefer assetClass and subMarketType (2026.09.21) */
+  marketType?: string;
 }
 
 export interface Ticker {
