@@ -9,6 +9,7 @@ import {
   ModifyHFOrderRequest,
   SubmitHFOrderRequest,
 } from './types/request/spot-trading.js';
+import { AmendOrderRequestUTA } from './types/request/uta-types.js';
 import {
   BatchCancelOrderResult,
   SubmitMultipleOrdersFuturesResponse,
@@ -18,6 +19,7 @@ import {
   SubmitHFOrderSyncResponse,
   SyncCancelHFOrderResponse,
 } from './types/response/spot-trading.js';
+import { AmendOrderResponseUTA } from './types/response/uta-types.js';
 import {
   WSAPICancelOrderRequest,
   WSAPIOrderResponse,
@@ -220,6 +222,20 @@ export class WebsocketAPIClient {
     return this.wsClient.sendWSAPIRequest(
       wsKey || WS_KEY_MAP.wsApiFuturesV1,
       'futures.multi_order',
+      params,
+    );
+  }
+
+  /**
+   * Amend a UTA futures order. Futures only (`op: uta.amend`).
+   */
+  amendFuturesOrder(
+    params: AmendOrderRequestUTA,
+    wsKey?: WSAPIWsKey,
+  ): Promise<WSAPIResponse<AmendOrderResponseUTA>> {
+    return this.wsClient.sendWSAPIRequest(
+      wsKey || WS_KEY_MAP.wsApiFuturesV1,
+      'uta.amend',
       params,
     );
   }
