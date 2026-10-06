@@ -347,17 +347,18 @@ This table includes all endpoints from the official Exchange API docs and corres
 
 | Function | AUTH | HTTP Method | Endpoint |
 | -------- | :------: | :------: | -------- |
-| [submitNewSpotOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L88) | :closed_lock_with_key:  | WS | `spot.order` |
-| [modifySpotOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L102) | :closed_lock_with_key:  | WS | `spot.modify` |
-| [cancelSpotOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L116) | :closed_lock_with_key:  | WS | `spot.cancel` |
-| [submitSyncSpotOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L130) | :closed_lock_with_key:  | WS | `spot.sync_order` |
-| [cancelSyncSpotOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L144) | :closed_lock_with_key:  | WS | `spot.sync_cancel` |
-| [submitMarginOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L158) | :closed_lock_with_key:  | WS | `margin.order` |
-| [cancelMarginOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L172) | :closed_lock_with_key:  | WS | `margin.cancel` |
-| [submitFuturesOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L186) | :closed_lock_with_key:  | WS | `futures.order` |
-| [cancelFuturesOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L200) | :closed_lock_with_key:  | WS | `futures.cancel` |
-| [submitMultipleFuturesOrders()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L216) | :closed_lock_with_key:  | WS | `futures.multi_order` |
-| [cancelMultipleFuturesOrders()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L230) | :closed_lock_with_key:  | WS | `futures.multi_cancel` |
+| [submitNewSpotOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L90) | :closed_lock_with_key:  | WS | `spot.order` |
+| [modifySpotOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L104) | :closed_lock_with_key:  | WS | `spot.modify` |
+| [cancelSpotOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L118) | :closed_lock_with_key:  | WS | `spot.cancel` |
+| [submitSyncSpotOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L132) | :closed_lock_with_key:  | WS | `spot.sync_order` |
+| [cancelSyncSpotOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L146) | :closed_lock_with_key:  | WS | `spot.sync_cancel` |
+| [submitMarginOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L160) | :closed_lock_with_key:  | WS | `margin.order` |
+| [cancelMarginOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L174) | :closed_lock_with_key:  | WS | `margin.cancel` |
+| [submitFuturesOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L188) | :closed_lock_with_key:  | WS | `futures.order` |
+| [cancelFuturesOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L202) | :closed_lock_with_key:  | WS | `futures.cancel` |
+| [submitMultipleFuturesOrders()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L218) | :closed_lock_with_key:  | WS | `futures.multi_order` |
+| [amendFuturesOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L232) | :closed_lock_with_key:  | WS | `uta.amend` |
+| [cancelMultipleFuturesOrders()](https://github.com/sieblyio/kucoin-api/blob/master/src/WebsocketAPIClient.ts#L246) | :closed_lock_with_key:  | WS | `futures.multi_cancel` |
 
 # UnifiedAPIClient.ts
 

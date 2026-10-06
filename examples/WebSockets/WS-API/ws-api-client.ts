@@ -4,7 +4,7 @@
  * This example demonstrates all available WebSocket API operations:
  * - Spot trading: submit, modify, cancel, sync operations
  * - Margin trading: submit and cancel orders
- * - Futures trading: submit, cancel, batch operations
+ * - Futures trading: submit, cancel, batch operations, UTA amend
  *
  * Usage:
  * Make sure to set your API credentials in environment variables:
@@ -204,7 +204,20 @@ async function main() {
     console.log('Multiple futures orders error:', e);
   }
 
-  // 11. Cancel Multiple Futures Orders
+  // 11. Amend UTA Futures Order
+  try {
+    console.log('\n13. Testing amendFuturesOrder...');
+    const amendFuturesResponse = await wsClient.amendFuturesOrder({
+      symbol: 'XBTUSDTM',
+      orderId: '358196976308797441', // Replace with actual order ID
+      newPrice: '1000',
+    });
+    console.log('Amend futures order response:', amendFuturesResponse);
+  } catch (e) {
+    console.log('Amend futures order error:', e);
+  }
+
+  // 12. Cancel Multiple Futures Orders
   try {
     console.log('\n12. Testing cancelMultipleFuturesOrders...');
     const cancelMultiFuturesResponse =

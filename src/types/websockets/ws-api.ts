@@ -5,6 +5,7 @@ import {
   ModifyHFOrderRequest,
   SubmitHFOrderRequest,
 } from '../request/spot-trading.js';
+import { AmendOrderRequestUTA } from '../request/uta-types.js';
 import {
   BatchCancelOrderResult,
   SubmitMultipleOrdersFuturesResponse,
@@ -14,6 +15,7 @@ import {
   SubmitHFOrderSyncResponse,
   SyncCancelHFOrderResponse,
 } from '../response/spot-trading.js';
+import { AmendOrderResponseUTA } from '../response/uta-types.js';
 
 export type WsOperation =
   | 'subscribe'
@@ -66,6 +68,7 @@ export const WS_API_Operations = [
   'futures.cancel',
   'futures.multi_order',
   'futures.multi_cancel',
+  'uta.amend',
 ] as const;
 
 export type WsAPIOperation = (typeof WS_API_Operations)[number];
@@ -139,6 +142,7 @@ export interface WsAPITopicRequestParamMap {
   'spot.sync_order': SubmitHFOrderRequest;
   'spot.modify': ModifyHFOrderRequest;
   'spot.sync_cancel': WSAPICancelOrderRequest;
+  'uta.amend': AmendOrderRequestUTA;
 }
 
 export interface WsAPITopicResponseMap {
@@ -168,6 +172,7 @@ export interface WsAPITopicResponseMap {
     clientOid: string;
   }>;
   'spot.sync_cancel': WSAPIResponse<SyncCancelHFOrderResponse>;
+  'uta.amend': WSAPIResponse<AmendOrderResponseUTA>;
 }
 
 export interface WSAPIAuthenticationRequestFromServer {
