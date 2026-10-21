@@ -1965,6 +1965,8 @@ export class SpotClient extends BaseRestClient {
    * Get Loan Market
    *
    * This API endpoint is used to get the information about the currencies available for lending.
+   *
+   * @deprecated KuCoin removed this endpoint on 21 Oct 2026. Calls will fail.
    */
   getLendingCurrencyV3(params?: {
     currency?: string;
@@ -1976,6 +1978,8 @@ export class SpotClient extends BaseRestClient {
    * Get Loan Market Interest Rate
    *
    * This API endpoint is used to get the interest rates of the margin lending market over the past 7 days.
+   *
+   * @deprecated KuCoin removed this endpoint on 21 Oct 2026. Calls will fail.
    */
   getLendingInterestRateV3(params: { currency: string }): Promise<
     APISuccessResponse<
@@ -1992,6 +1996,8 @@ export class SpotClient extends BaseRestClient {
    * Purchase
    *
    * Invest credit in the market and earn interest,Please ensure that the funds are in the main(funding) account
+   *
+   * @deprecated KuCoin removed this endpoint on 21 Oct 2026. Calls will fail.
    */
   submitLendingSubscriptionV3(
     params: InitiateLendingSubscriptionV3Request,
@@ -2009,6 +2015,8 @@ export class SpotClient extends BaseRestClient {
    * Modify Purchase
    *
    * This API endpoint is used to update the interest rates of subscription orders, which will take effect at the beginning of the next hour.
+   *
+   * @deprecated KuCoin removed this endpoint on 21 Oct 2026. Calls will fail.
    */
   updateLendingSubscriptionOrdersV3(
     params: ModifyLendingSubscriptionOrdersV3Request,
@@ -2020,6 +2028,8 @@ export class SpotClient extends BaseRestClient {
    * Get Purchase Orders
    *
    * This API endpoint provides pagination query for the purchase orders.
+   *
+   * @deprecated KuCoin removed this endpoint on 21 Oct 2026. Calls will fail.
    */
   getLendingSubscriptionOrdersV3(
     params: GetLendingSubscriptionOrdersV3Request,
@@ -2031,6 +2041,8 @@ export class SpotClient extends BaseRestClient {
    * Redeem
    *
    * Redeem your loan order
+   *
+   * @deprecated KuCoin removed this endpoint on 21 Oct 2026. Calls will fail.
    */
   submitLendingRedemptionV3(
     params: InitiateLendingRedemptionV3Request,
@@ -2048,6 +2060,8 @@ export class SpotClient extends BaseRestClient {
    * Get Redeem Orders
    *
    * This API endpoint provides pagination query for the redeem orders.
+   *
+   * @deprecated KuCoin removed this endpoint on 21 Oct 2026. Calls will fail.
    */
   getLendingRedemptionOrdersV3(
     params: GetLendingRedemptionOrdersV3Request,

@@ -179,78 +179,78 @@ This table includes all endpoints from the official Exchange API docs and corres
 | [getMarginRepayHistoryV3()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L1928) | :closed_lock_with_key:  | GET | `api/v3/margin/repay` |
 | [getMarginInterestRecordsV3()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L1939) | :closed_lock_with_key:  | GET | `api/v3/margin/interest` |
 | [updateMarginLeverageV3()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L1950) | :closed_lock_with_key:  | POST | `api/v3/position/update-user-leverage` |
-| [getLendingCurrencyV3()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L1969) |  | GET | `api/v3/project/list` |
-| [getLendingInterestRateV3()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L1980) |  | GET | `api/v3/project/marketInterestRate` |
-| [submitLendingSubscriptionV3()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L1996) | :closed_lock_with_key:  | POST | `api/v3/purchase` |
-| [updateLendingSubscriptionOrdersV3()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2013) | :closed_lock_with_key:  | POST | `api/v3/lend/purchase/update` |
-| [getLendingSubscriptionOrdersV3()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2024) | :closed_lock_with_key:  | GET | `api/v3/purchase/orders` |
-| [submitLendingRedemptionV3()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2035) | :closed_lock_with_key:  | POST | `api/v3/redeem` |
-| [getLendingRedemptionOrdersV3()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2052) | :closed_lock_with_key:  | GET | `api/v3/redeem/orders` |
-| [getMarginRiskLimitConfig()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2069) | :closed_lock_with_key:  | GET | `api/v3/margin/currencies` |
-| [getConvertSymbol()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2086) |  | GET | `api/v1/convert/symbol` |
-| [getConvertCurrencies()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2097) |  | GET | `api/v1/convert/currencies` |
-| [submitConvertOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2106) | :closed_lock_with_key:  | POST | `api/v1/convert/order` |
-| [getConvertQuote()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2117) | :closed_lock_with_key:  | GET | `api/v1/convert/quote` |
-| [getConvertOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2128) | :closed_lock_with_key:  | GET | `api/v1/convert/order/detail` |
-| [getConvertOrderHistory()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2139) | :closed_lock_with_key:  | GET | `api/v1/convert/order/history` |
-| [submitConvertLimitOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2150) | :closed_lock_with_key:  | POST | `api/v1/convert/limit/order` |
-| [getConvertLimitQuote()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2161) | :closed_lock_with_key:  | GET | `api/v1/convert/limit/quote` |
-| [getConvertLimitOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2172) | :closed_lock_with_key:  | GET | `api/v1/convert/limit/order/detail` |
-| [getConvertLimitOrders()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2183) | :closed_lock_with_key:  | GET | `api/v1/convert/limit/orders` |
-| [cancelConvertLimitOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2194) | :closed_lock_with_key:  | DELETE | `api/v1/convert/limit/order/cancel` |
-| [subscribeEarnFixedIncome()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2212) | :closed_lock_with_key:  | POST | `api/v1/earn/orders` |
-| [getEarnRedeemPreview()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2223) | :closed_lock_with_key:  | GET | `api/v1/earn/redeem-preview` |
-| [submitRedemption()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2234) | :closed_lock_with_key:  | DELETE | `api/v1/earn/orders` |
-| [getEarnSavingsProducts()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2245) | :closed_lock_with_key:  | GET | `api/v1/earn/saving/products` |
-| [getEarnPromotionProducts()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2256) | :closed_lock_with_key:  | GET | `api/v1/earn/promotion/products` |
-| [getEarnFixedIncomeHoldAssets()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2267) | :closed_lock_with_key:  | GET | `api/v1/earn/hold-assets` |
-| [getEarnStakingProducts()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2278) | :closed_lock_with_key:  | GET | `api/v1/earn/staking/products` |
-| [getEarnKcsStakingProducts()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2290) | :closed_lock_with_key:  | GET | `api/v1/earn/kcs-staking/products` |
-| [getEarnEthStakingProducts()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2302) | :closed_lock_with_key:  | GET | `api/v1/earn/eth-staking/products` |
-| [submitStructuredProductPurchase()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2319) | :closed_lock_with_key:  | POST | `api/v1/struct-earn/orders` |
-| [getDualInvestmentProducts()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2330) |  | GET | `api/v1/struct-earn/dual/products` |
-| [getStructuredProductOrders()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2341) | :closed_lock_with_key:  | GET | `api/v1/struct-earn/orders` |
-| [getDiscountRateConfigs()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2359) | :closed_lock_with_key:  | GET | `api/v1/otc-loan/discount-rate-configs` |
-| [getOtcLoan()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2370) | :closed_lock_with_key:  | GET | `api/v1/otc-loan/loan` |
-| [getOtcLoanAccounts()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2379) | :closed_lock_with_key:  | GET | `api/v1/otc-loan/accounts` |
-| [getAffiliateUserRebateInfo()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2395) | :closed_lock_with_key:  | GET | `api/v2/affiliate/inviter/statistics` |
-| [getAffiliateInvitees()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2404) | :closed_lock_with_key:  | GET | `api/v2/affiliate/queryInvitees` |
-| [getAffiliateCommission()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2415) | :closed_lock_with_key:  | GET | `api/v2/affiliate/queryMyCommission` |
-| [getAffiliateTradeHistory()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2426) | :closed_lock_with_key:  | GET | `api/v2/affiliate/queryTransactionByUid` |
-| [getAffiliateTransaction()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2437) | :closed_lock_with_key:  | GET | `api/v2/affiliate/queryTransactionByTime` |
-| [getKumining()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2448) | :closed_lock_with_key:  | GET | `api/v2/affiliate/queryKumining` |
-| [getBrokerRebateOrderDownloadLink()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2466) | :closed_lock_with_key:  | GET | `api/v1/broker/api/rebase/download` |
-| [getBrokerRebateOrderDownloadLinkV2()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2479) | :closed_lock_with_key:  | GET | `api/v2/broker/api/rebase/download` |
-| [getPublicWSConnectionToken()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2496) |  | POST | `api/v1/bullet-public` |
-| [getPrivateWSConnectionToken()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2503) | :closed_lock_with_key:  | POST | `api/v1/bullet-private` |
-| [getPrivateWSConnectionTokenV2()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2511) | :closed_lock_with_key:  | POST | `api/v2/bullet-private` |
-| [getSubAccountsV1()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2533) | :closed_lock_with_key:  | GET | `api/v1/sub/user` |
-| [getSubAccountBalancesV1()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2541) | :closed_lock_with_key:  | GET | `api/v1/sub-accounts` |
-| [getMarginBalances()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2556) | :closed_lock_with_key:  | GET | `api/v1/margin/account` |
-| [createDepositAddress()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2574) | :closed_lock_with_key:  | POST | `api/v1/deposit-addresses` |
-| [getDepositAddressesV2()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2584) | :closed_lock_with_key:  | GET | `api/v2/deposit-addresses` |
-| [getDepositAddressV1()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2593) | :closed_lock_with_key:  | GET | `api/v1/deposit-addresses` |
-| [getHistoricalDepositsV1()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2604) | :closed_lock_with_key:  | GET | `api/v1/hist-deposits` |
-| [getHistoricalWithdrawalsV1()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2620) | :closed_lock_with_key:  | GET | `api/v1/hist-withdrawals` |
-| [submitWithdraw()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2629) | :closed_lock_with_key:  | POST | `api/v1/withdrawals` |
-| [submitTransferMasterSub()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2645) | :closed_lock_with_key:  | POST | `api/v2/accounts/sub-transfer` |
-| [submitInnerTransfer()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2657) | :closed_lock_with_key:  | POST | `api/v2/accounts/inner-transfer` |
-| [submitOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2675) | :closed_lock_with_key:  | POST | `api/v1/orders` |
-| [submitOrderTest()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2687) | :closed_lock_with_key:  | POST | `api/v1/orders/test` |
-| [submitMultipleOrders()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2695) | :closed_lock_with_key:  | POST | `api/v1/orders/multi` |
-| [cancelOrderById()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2706) | :closed_lock_with_key:  | DELETE | `api/v1/orders/{orderId}` |
-| [cancelOrderByClientOid()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2718) | :closed_lock_with_key:  | DELETE | `api/v1/order/client-order/{clientOid}` |
-| [cancelAllOrders()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2731) | :closed_lock_with_key:  | DELETE | `api/v1/orders` |
-| [getOrders()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2743) | :closed_lock_with_key:  | GET | `api/v1/orders` |
-| [getRecentOrders()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2753) | :closed_lock_with_key:  | GET | `api/v1/limit/orders` |
-| [getOrderByOrderId()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2764) | :closed_lock_with_key:  | GET | `api/v1/orders/{orderId}` |
-| [getOrderByClientOid()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2774) | :closed_lock_with_key:  | GET | `api/v1/order/client-order/{clientOid}` |
-| [getFills()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2790) | :closed_lock_with_key:  | GET | `api/v1/fills` |
-| [getRecentFills()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2800) | :closed_lock_with_key:  | GET | `api/v1/limit/fills` |
-| [submitMarginOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2815) | :closed_lock_with_key:  | POST | `api/v1/margin/order` |
-| [submitMarginOrderTest()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2826) | :closed_lock_with_key:  | POST | `api/v1/margin/order/test` |
-| [getIsolatedMarginAccounts()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2841) | :closed_lock_with_key:  | GET | `api/v1/isolated/accounts` |
-| [getIsolatedMarginAccount()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2852) | :closed_lock_with_key:  | GET | `api/v1/isolated/account/{symbol}` |
+| [getLendingCurrencyV3()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L1971) |  | GET | `api/v3/project/list` |
+| [getLendingInterestRateV3()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L1984) |  | GET | `api/v3/project/marketInterestRate` |
+| [submitLendingSubscriptionV3()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2002) | :closed_lock_with_key:  | POST | `api/v3/purchase` |
+| [updateLendingSubscriptionOrdersV3()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2021) | :closed_lock_with_key:  | POST | `api/v3/lend/purchase/update` |
+| [getLendingSubscriptionOrdersV3()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2034) | :closed_lock_with_key:  | GET | `api/v3/purchase/orders` |
+| [submitLendingRedemptionV3()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2047) | :closed_lock_with_key:  | POST | `api/v3/redeem` |
+| [getLendingRedemptionOrdersV3()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2066) | :closed_lock_with_key:  | GET | `api/v3/redeem/orders` |
+| [getMarginRiskLimitConfig()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2083) | :closed_lock_with_key:  | GET | `api/v3/margin/currencies` |
+| [getConvertSymbol()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2100) |  | GET | `api/v1/convert/symbol` |
+| [getConvertCurrencies()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2111) |  | GET | `api/v1/convert/currencies` |
+| [submitConvertOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2120) | :closed_lock_with_key:  | POST | `api/v1/convert/order` |
+| [getConvertQuote()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2131) | :closed_lock_with_key:  | GET | `api/v1/convert/quote` |
+| [getConvertOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2142) | :closed_lock_with_key:  | GET | `api/v1/convert/order/detail` |
+| [getConvertOrderHistory()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2153) | :closed_lock_with_key:  | GET | `api/v1/convert/order/history` |
+| [submitConvertLimitOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2164) | :closed_lock_with_key:  | POST | `api/v1/convert/limit/order` |
+| [getConvertLimitQuote()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2175) | :closed_lock_with_key:  | GET | `api/v1/convert/limit/quote` |
+| [getConvertLimitOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2186) | :closed_lock_with_key:  | GET | `api/v1/convert/limit/order/detail` |
+| [getConvertLimitOrders()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2197) | :closed_lock_with_key:  | GET | `api/v1/convert/limit/orders` |
+| [cancelConvertLimitOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2208) | :closed_lock_with_key:  | DELETE | `api/v1/convert/limit/order/cancel` |
+| [subscribeEarnFixedIncome()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2226) | :closed_lock_with_key:  | POST | `api/v1/earn/orders` |
+| [getEarnRedeemPreview()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2237) | :closed_lock_with_key:  | GET | `api/v1/earn/redeem-preview` |
+| [submitRedemption()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2248) | :closed_lock_with_key:  | DELETE | `api/v1/earn/orders` |
+| [getEarnSavingsProducts()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2259) | :closed_lock_with_key:  | GET | `api/v1/earn/saving/products` |
+| [getEarnPromotionProducts()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2270) | :closed_lock_with_key:  | GET | `api/v1/earn/promotion/products` |
+| [getEarnFixedIncomeHoldAssets()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2281) | :closed_lock_with_key:  | GET | `api/v1/earn/hold-assets` |
+| [getEarnStakingProducts()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2292) | :closed_lock_with_key:  | GET | `api/v1/earn/staking/products` |
+| [getEarnKcsStakingProducts()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2304) | :closed_lock_with_key:  | GET | `api/v1/earn/kcs-staking/products` |
+| [getEarnEthStakingProducts()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2316) | :closed_lock_with_key:  | GET | `api/v1/earn/eth-staking/products` |
+| [submitStructuredProductPurchase()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2333) | :closed_lock_with_key:  | POST | `api/v1/struct-earn/orders` |
+| [getDualInvestmentProducts()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2344) |  | GET | `api/v1/struct-earn/dual/products` |
+| [getStructuredProductOrders()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2355) | :closed_lock_with_key:  | GET | `api/v1/struct-earn/orders` |
+| [getDiscountRateConfigs()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2373) | :closed_lock_with_key:  | GET | `api/v1/otc-loan/discount-rate-configs` |
+| [getOtcLoan()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2384) | :closed_lock_with_key:  | GET | `api/v1/otc-loan/loan` |
+| [getOtcLoanAccounts()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2393) | :closed_lock_with_key:  | GET | `api/v1/otc-loan/accounts` |
+| [getAffiliateUserRebateInfo()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2409) | :closed_lock_with_key:  | GET | `api/v2/affiliate/inviter/statistics` |
+| [getAffiliateInvitees()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2418) | :closed_lock_with_key:  | GET | `api/v2/affiliate/queryInvitees` |
+| [getAffiliateCommission()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2429) | :closed_lock_with_key:  | GET | `api/v2/affiliate/queryMyCommission` |
+| [getAffiliateTradeHistory()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2440) | :closed_lock_with_key:  | GET | `api/v2/affiliate/queryTransactionByUid` |
+| [getAffiliateTransaction()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2451) | :closed_lock_with_key:  | GET | `api/v2/affiliate/queryTransactionByTime` |
+| [getKumining()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2462) | :closed_lock_with_key:  | GET | `api/v2/affiliate/queryKumining` |
+| [getBrokerRebateOrderDownloadLink()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2480) | :closed_lock_with_key:  | GET | `api/v1/broker/api/rebase/download` |
+| [getBrokerRebateOrderDownloadLinkV2()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2493) | :closed_lock_with_key:  | GET | `api/v2/broker/api/rebase/download` |
+| [getPublicWSConnectionToken()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2510) |  | POST | `api/v1/bullet-public` |
+| [getPrivateWSConnectionToken()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2517) | :closed_lock_with_key:  | POST | `api/v1/bullet-private` |
+| [getPrivateWSConnectionTokenV2()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2525) | :closed_lock_with_key:  | POST | `api/v2/bullet-private` |
+| [getSubAccountsV1()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2547) | :closed_lock_with_key:  | GET | `api/v1/sub/user` |
+| [getSubAccountBalancesV1()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2555) | :closed_lock_with_key:  | GET | `api/v1/sub-accounts` |
+| [getMarginBalances()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2570) | :closed_lock_with_key:  | GET | `api/v1/margin/account` |
+| [createDepositAddress()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2588) | :closed_lock_with_key:  | POST | `api/v1/deposit-addresses` |
+| [getDepositAddressesV2()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2598) | :closed_lock_with_key:  | GET | `api/v2/deposit-addresses` |
+| [getDepositAddressV1()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2607) | :closed_lock_with_key:  | GET | `api/v1/deposit-addresses` |
+| [getHistoricalDepositsV1()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2618) | :closed_lock_with_key:  | GET | `api/v1/hist-deposits` |
+| [getHistoricalWithdrawalsV1()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2634) | :closed_lock_with_key:  | GET | `api/v1/hist-withdrawals` |
+| [submitWithdraw()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2643) | :closed_lock_with_key:  | POST | `api/v1/withdrawals` |
+| [submitTransferMasterSub()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2659) | :closed_lock_with_key:  | POST | `api/v2/accounts/sub-transfer` |
+| [submitInnerTransfer()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2671) | :closed_lock_with_key:  | POST | `api/v2/accounts/inner-transfer` |
+| [submitOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2689) | :closed_lock_with_key:  | POST | `api/v1/orders` |
+| [submitOrderTest()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2701) | :closed_lock_with_key:  | POST | `api/v1/orders/test` |
+| [submitMultipleOrders()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2709) | :closed_lock_with_key:  | POST | `api/v1/orders/multi` |
+| [cancelOrderById()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2720) | :closed_lock_with_key:  | DELETE | `api/v1/orders/{orderId}` |
+| [cancelOrderByClientOid()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2732) | :closed_lock_with_key:  | DELETE | `api/v1/order/client-order/{clientOid}` |
+| [cancelAllOrders()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2745) | :closed_lock_with_key:  | DELETE | `api/v1/orders` |
+| [getOrders()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2757) | :closed_lock_with_key:  | GET | `api/v1/orders` |
+| [getRecentOrders()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2767) | :closed_lock_with_key:  | GET | `api/v1/limit/orders` |
+| [getOrderByOrderId()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2778) | :closed_lock_with_key:  | GET | `api/v1/orders/{orderId}` |
+| [getOrderByClientOid()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2788) | :closed_lock_with_key:  | GET | `api/v1/order/client-order/{clientOid}` |
+| [getFills()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2804) | :closed_lock_with_key:  | GET | `api/v1/fills` |
+| [getRecentFills()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2814) | :closed_lock_with_key:  | GET | `api/v1/limit/fills` |
+| [submitMarginOrder()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2829) | :closed_lock_with_key:  | POST | `api/v1/margin/order` |
+| [submitMarginOrderTest()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2840) | :closed_lock_with_key:  | POST | `api/v1/margin/order/test` |
+| [getIsolatedMarginAccounts()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2855) | :closed_lock_with_key:  | GET | `api/v1/isolated/accounts` |
+| [getIsolatedMarginAccount()](https://github.com/sieblyio/kucoin-api/blob/master/src/SpotClient.ts#L2866) | :closed_lock_with_key:  | GET | `api/v1/isolated/account/{symbol}` |
 
 # FuturesClient.ts
 
