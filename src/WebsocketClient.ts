@@ -510,10 +510,19 @@ export class WebsocketClient extends BaseWebsocketClient<WsKey> {
    */
   protected isDiscardable(event: MessageEventLike, wsKey: WsKey): boolean {
     try {
-      const filter = this.options.dataMessageFilter;
-      return (
-        !!filter && isDataPushFrame(event.data) && !filter(event.data, wsKey)
-      );
+      const shouldAcceptMessageFn = this.options.dataMessageFilter;
+      if (
+        !shouldAcceptMessageFn ||
+        typeof shouldAcceptMessageFn !== 'function'
+      ) {
+        return false;
+      }
+
+      if (!isDataPushFrame(event.data)) {
+        return false;
+      }
+
+      return shouldAcceptMessageFn(event.data, wsKey) === false;
     } catch (exception) {
       this.logErrorSafely(
         'Exception in isDiscardable(), processing the frame as usual',

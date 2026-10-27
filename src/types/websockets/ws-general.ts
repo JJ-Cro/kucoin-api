@@ -80,6 +80,9 @@ export interface WSClientConfigurableOptions {
    *
    * Control frames (welcome, ack, error, pong) never reach the filter, and if it throws
    * the frame is processed as usual.
+   *
+   * - Return `false` to drop the message before any JSON parsing.
+   * - Return `true` to allow it through.
    */
   dataMessageFilter?: WsDataMessageFilter;
 }
