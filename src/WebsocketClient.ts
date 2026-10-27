@@ -14,6 +14,7 @@ import {
   SignEncodeMethod,
   signMessage,
 } from './lib/webCryptoAPI.js';
+import { isDataPushFrame, isPongFrame } from './lib/websocket/frame-utils.js';
 import {
   getPromiseRefForWSAPIRequest,
   isWSAPIWsKey,
@@ -498,12 +499,46 @@ export class WebsocketClient extends BaseWebsocketClient<WsKey> {
   }
 
   protected isWsPong(msg: any): boolean {
-    if (msg?.data?.includes('pong')) {
-      return true;
-    }
+    return isPongFrame(msg?.data);
+  }
 
-    // this.logger.info(`Not a pong: `, msg);
-    return false;
+  /**
+   * Drops a data push rejected by `dataMessageFilter`, before it is parsed.
+   *
+   * Runs on every frame, so nothing thrown here may reach the message path: on any
+   * exception (including one from the user-supplied filter) the frame is processed as usual.
+   */
+  protected isDiscardable(event: MessageEventLike, wsKey: WsKey): boolean {
+    try {
+      const shouldAcceptMessageFn = this.options.dataMessageFilter;
+      if (
+        !shouldAcceptMessageFn ||
+        typeof shouldAcceptMessageFn !== 'function'
+      ) {
+        return false;
+      }
+
+      if (!isDataPushFrame(event.data)) {
+        return false;
+      }
+
+      return shouldAcceptMessageFn(event.data, wsKey) === false;
+    } catch (exception) {
+      this.logErrorSafely(
+        'Exception in isDiscardable(), processing the frame as usual',
+        { wsKey, exception },
+      );
+      return false;
+    }
+  }
+
+  /** For hot-path error handlers: a failing custom logger must not throw from here either. */
+  private logErrorSafely(message: string, context: Record<string, unknown>) {
+    try {
+      this.logger.error(message, { ...WS_LOGGER_CATEGORY, ...context });
+    } catch {
+      // Nothing left to report to.
+    }
   }
 
   protected resolveEmittableEvents(
