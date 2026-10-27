@@ -228,6 +228,14 @@ export abstract class BaseWebsocketClient<
 
   protected abstract isWsPong(data: any): boolean;
 
+  /**
+   * Called for every text frame after ping/pong handling and before it is parsed.
+   * Returning true drops the frame: it is not parsed or emitted.
+   */
+  protected isDiscardable(_event: MessageEventLike, _wsKey: TWSKey): boolean {
+    return false;
+  }
+
   protected abstract getWsAuthRequestEvent(
     wsKey: TWSKey,
     eventToAuth?: object,
@@ -1049,6 +1057,10 @@ export abstract class BaseWebsocketClient<
       }
 
       if (isMessageEvent(event)) {
+        if (this.isDiscardable(event, wsKey)) {
+          return;
+        }
+
         const data = event.data;
         const dataType = event.type;
 
